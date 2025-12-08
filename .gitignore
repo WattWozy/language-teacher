@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environment
+venv/
+env/
+
+# Models (Large files)
+models/*.onnx
+models/*.onnx.json
+
+# IDEs
+.vscode/
+.idea/
+
+# Environment Variables
+.env

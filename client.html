@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Push-to-Talk</title>
+</head>
+<body>
+<h3>Press Spacebar to talk</h3>
+<script>
+let ws = new WebSocket("ws://localhost:8000/ws");
+let mediaRecorder, chunks = [];
+
+navigator.mediaDevices.getUserMedia({audio: true}).then(stream => {
+    mediaRecorder = new MediaRecorder(stream);
+    mediaRecorder.ondataavailable = e => chunks.push(e.data);
+});
+
+document.body.onkeydown = e => {
+    if (e.code === "Space" && mediaRecorder.state !== "recording") {
+        chunks = [];
+        mediaRecorder.start();
+        console.log("Recording...");
+    }
+};
+
+document.body.onkeyup = e => {
+    if (e.code === "Space" && mediaRecorder.state === "recording") {
+        mediaRecorder.stop();
+        console.log("Stopped recording.");
+        mediaRecorder.onstop = async () => {
+            let blob = new Blob(chunks, {type: "audio/wav"});
+            let arrayBuffer = await blob.arrayBuffer();
+            ws.send(arrayBuffer);
+        };
+    }
+};
+
+let audioQueue = [];
+let isPlaying = false;
+
+function playNext() {
+    if (audioQueue.length === 0) {
+        isPlaying = false;
+        return;
+    }
+    isPlaying = true;
+    let audioUrl = audioQueue.shift();
+    let audio = new Audio(audioUrl);
+    audio.onended = () => {
+        playNext();
+    };
+    audio.play();
+}
+
+ws.onmessage = async event => {
+    let audioBase64 = event.data;
+    let audioBytes = Uint8Array.from(atob(audioBase64), c => c.charCodeAt(0));
+    let audioBlob = new Blob([audioBytes], {type: "audio/wav"});
+    let audioUrl = URL.createObjectURL(audioBlob);
+    
+    audioQueue.push(audioUrl);
+    if (!isPlaying) {
+        playNext();
+    }
+};
+</script>
+</body>
+</html>
+
