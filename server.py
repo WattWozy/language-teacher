@@ -132,9 +132,11 @@ async def websocket_endpoint(ws: WebSocket):
         if text.strip().lower() == "/reset":
             chat_history = []
             print("Context reset.")
+            await ws.send_json({"type": "log", "role": "system", "text": "Context reset.", "lang": "en"})
             continue
 
         print(f"User ({detected_lang}): {text}")
+        await ws.send_json({"type": "log", "role": "user", "text": text, "lang": detected_lang})
         
         # Select Voice based on detected language
         # Default to English if language not supported
@@ -204,13 +206,14 @@ async def websocket_endpoint(ws: WebSocket):
                                     to_speak = current_sentence.strip()
                                     if to_speak:
                                         print(f"Speaking ({detected_lang}): {to_speak}")
+                                        await ws.send_json({"type": "log", "role": "assistant", "text": to_speak, "lang": detected_lang})
                                         # Generate audio for this sentence
                                         pcm = await run_in_threadpool(synthesize_audio, to_speak, current_voice)
                                         if len(pcm) > 0:
                                             buf = io.BytesIO()
                                             sf.write(buf, pcm, PLAYBACK_SAMPLE_RATE, format="WAV")
                                             audio_bytes = buf.getvalue()
-                                            await ws.send_text(base64.b64encode(audio_bytes).decode())
+                                            await ws.send_json({"type": "audio", "data": base64.b64encode(audio_bytes).decode()})
                                     
                                     current_sentence = ""
                                 
@@ -220,12 +223,13 @@ async def websocket_endpoint(ws: WebSocket):
             # Process any remaining text
             if current_sentence.strip():
                 print(f"Speaking (final): {current_sentence}")
+                await ws.send_json({"type": "log", "role": "assistant", "text": current_sentence, "lang": detected_lang})
                 pcm = await run_in_threadpool(synthesize_audio, current_sentence, current_voice)
                 if len(pcm) > 0:
                     buf = io.BytesIO()
                     sf.write(buf, pcm, PLAYBACK_SAMPLE_RATE, format="WAV")
                     audio_bytes = buf.getvalue()
-                    await ws.send_text(base64.b64encode(audio_bytes).decode())
+                    await ws.send_json({"type": "audio", "data": base64.b64encode(audio_bytes).decode()})
             
             # Append assistant response to history
             chat_history.append({"role": "assistant", "content": full_response})

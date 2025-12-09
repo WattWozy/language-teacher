@@ -161,6 +161,88 @@
         .send-btn:hover {
             background-color: #3737d1;
         }
+
+        .side-panel {
+            width: 350px;
+            height: 80vh;
+            background: rgba(235, 250, 235, 0.95); /* Green tint */
+            border-radius: 24px;
+            margin-left: 40px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            border: 1px solid #c3e6cb;
+        }
+
+        .panel-section {
+            flex: 1;
+            overflow-y: auto;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 16px;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .panel-title {
+            font-weight: 700;
+            color: #2d5a3f;
+            margin-bottom: 10px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .log-entry {
+            margin-bottom: 10px;
+            padding: 10px 14px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+        }
+
+        .log-user {
+            background-color: #ffffff;
+            border-left: 4px solid #5352ed;
+            margin-left: 20px;
+        }
+
+        .log-assistant {
+            background-color: #e8f5e9;
+            border-left: 4px solid #2ed573;
+            margin-right: 20px;
+        }
+
+        .log-system {
+            background-color: #fff3e0;
+            text-align: center;
+            font-style: italic;
+            font-size: 0.8rem;
+            color: #7f8c8d;
+        }
+
+        .interactive-word {
+            display: inline-block;
+            margin: 4px;
+            padding: 6px 12px;
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .interactive-word:hover {
+            background-color: #5352ed;
+            color: white;
+            border-color: #5352ed;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(83, 82, 237, 0.3);
+        }
     </style>
 </head>
 <body>
@@ -176,6 +258,20 @@
             <button class="send-btn" id="sendBtn">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
             </button>
+        </div>
+    </div>
+
+    <div class="side-panel">
+        <div class="panel-title">Conversation</div>
+        <div class="panel-section" id="conversationPanel">
+            <!-- Logs go here -->
+        </div>
+        
+        <div class="panel-title">Translations</div>
+        <div class="panel-section" id="translationPanel">
+            <div style="color: #999; font-style: italic; text-align: center; margin-top: 20px;">
+                Translations will appear here...
+            </div>
         </div>
     </div>
 
@@ -300,16 +396,89 @@
         }
 
         ws.onmessage = async event => {
-            const audioBase64 = event.data;
-            const audioBytes = Uint8Array.from(atob(audioBase64), c => c.charCodeAt(0));
-            const audioBlob = new Blob([audioBytes], {type: "audio/wav"});
-            const audioUrl = URL.createObjectURL(audioBlob);
-            
-            audioQueue.push(audioUrl);
-            if (!isPlaying) {
-                playNext();
+            try {
+                const message = JSON.parse(event.data);
+                
+                if (message.type === 'audio') {
+                    const audioBase64 = message.data;
+                    const audioBytes = Uint8Array.from(atob(audioBase64), c => c.charCodeAt(0));
+                    const audioBlob = new Blob([audioBytes], {type: "audio/wav"});
+                    const audioUrl = URL.createObjectURL(audioBlob);
+                    
+                    audioQueue.push(audioUrl);
+                    if (!isPlaying) {
+                        playNext();
+                    }
+                } else if (message.type === 'log') {
+                    addLogEntry(message);
+                }
+            } catch (e) {
+                console.error("Error parsing message:", e);
             }
         };
+
+        function addLogEntry(msg) {
+            const conversationPanel = document.getElementById('conversationPanel');
+            const div = document.createElement('div');
+            div.className = `log-entry log-${msg.role}`;
+            div.style.cursor = 'pointer';
+            div.title = "Click to analyze words";
+            
+            div.onclick = () => analyzeSentence(msg.text);
+            
+            // Add language tag if available
+            if (msg.lang) {
+                const langTag = document.createElement('span');
+                langTag.style.fontSize = '0.7em';
+                langTag.style.fontWeight = 'bold';
+                langTag.style.color = '#888';
+                langTag.style.marginRight = '5px';
+                langTag.innerText = `[${msg.lang.toUpperCase()}]`;
+                div.appendChild(langTag);
+            }
+            
+            const textSpan = document.createElement('span');
+            textSpan.innerText = msg.text;
+            div.appendChild(textSpan);
+            
+            conversationPanel.appendChild(div);
+            conversationPanel.scrollTop = conversationPanel.scrollHeight;
+        }
+
+        function analyzeSentence(text) {
+            const translationPanel = document.getElementById('translationPanel');
+            translationPanel.innerHTML = ''; // Clear previous content
+            
+            // Create a container for the words
+            const container = document.createElement('div');
+            container.style.display = 'flex';
+            container.style.flexWrap = 'wrap';
+            container.style.gap = '5px';
+            
+            // Split text into words by whitespace
+            const words = text.trim().split(/\s+/);
+            
+            words.forEach(word => {
+                const span = document.createElement('span');
+                span.className = 'interactive-word';
+                span.innerText = word;
+                span.onclick = (e) => {
+                    e.stopPropagation();
+                    console.log("Selected word:", word);
+                    
+                    // Visual feedback: Reset others and highlight selected
+                    document.querySelectorAll('.interactive-word').forEach(w => {
+                        w.style.backgroundColor = '';
+                        w.style.color = '';
+                    });
+                    span.style.backgroundColor = '#2ed573';
+                    span.style.color = 'white';
+                };
+                container.appendChild(span);
+            });
+            
+            translationPanel.appendChild(container);
+        }
 
         ws.onclose = () => {
             statusText.innerText = "Disconnected";
