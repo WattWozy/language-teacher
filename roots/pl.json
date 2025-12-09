@@ -1,0 +1,128 @@
+{
+    "part": {
+        "general": {
+            "również": {
+                "translation": "",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "również"
+                ],
+                "metadata": {
+                    "lemma": "również",
+                    "pos_full": "QUB",
+                    "morphology": {},
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            }
+        }
+    },
+    "adv": {
+        "general": {
+            "bardzo": {
+                "translation": "",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "bardzo"
+                ],
+                "metadata": {
+                    "lemma": "bardzo",
+                    "pos_full": "SUBST",
+                    "morphology": {
+                        "Degree": "Pos"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            }
+        }
+    },
+    "adj": {
+        "general": {
+            "długi": {
+                "translation": "",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "długi"
+                ],
+                "metadata": {
+                    "lemma": "dług",
+                    "pos_full": "ADJ",
+                    "morphology": {
+                        "Animacy": "Inan",
+                        "Case": "Nom",
+                        "Degree": "Pos",
+                        "Gender": "Masc",
+                        "Number": "Sing"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            }
+        }
+    },
+    "noun": {
+        "general": {
+            "dzień": {
+                "translation": "",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "dzień"
+                ],
+                "metadata": {
+                    "lemma": "dzień",
+                    "pos_full": "ADJ",
+                    "morphology": {
+                        "Animacy": "Inan",
+                        "Case": "Nom",
+                        "Gender": "Masc",
+                        "Number": "Sing"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            }
+        }
+    },
+    "verb": {
+        "general": {
+            "mam": {
+                "translation": "",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "mam"
+                ],
+                "metadata": {
+                    "lemma": "mieć",
+                    "pos_full": "FIN",
+                    "morphology": {
+                        "Aspect": "Imp",
+                        "Mood": "Ind",
+                        "Number": "Sing",
+                        "Person": "1",
+                        "Tense": "Pres",
+                        "VerbForm": "Fin",
+                        "Voice": "Act"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            }
+        }
+    }
+}

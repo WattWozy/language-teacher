@@ -243,6 +243,67 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(83, 82, 237, 0.3);
         }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #121212;
+                color: #e0e0e0;
+            }
+
+            .container {
+                background: #1e1e1e;
+                box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+            }
+
+            .visualizer {
+                background-color: #2d2d2d;
+            }
+
+            .status-text {
+                color: #ecf0f1;
+            }
+
+            .chat-input {
+                background-color: #2d2d2d;
+                border-color: #404040;
+                color: white;
+            }
+
+            .side-panel {
+                background: #1a261a;
+                border-color: #2d4a35;
+            }
+
+            .panel-section {
+                background: rgba(0, 0, 0, 0.2);
+                border-color: rgba(255,255,255,0.05);
+            }
+
+            .panel-title {
+                color: #81c784;
+            }
+
+            .log-user {
+                background-color: #2d2d2d;
+                color: #e0e0e0;
+            }
+
+            .log-assistant {
+                background-color: #1b3a25;
+                color: #e0e0e0;
+            }
+
+            .log-system {
+                background-color: #3e2723;
+                color: #bcaaa4;
+            }
+
+            .interactive-word {
+                background: #2d2d2d;
+                border-color: #404040;
+                color: #e0e0e0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -424,7 +485,7 @@
             div.style.cursor = 'pointer';
             div.title = "Click to analyze words";
             
-            div.onclick = () => analyzeSentence(msg.text);
+            div.onclick = () => analyzeSentence(msg.text, msg.lang);
             
             // Add language tag if available
             if (msg.lang) {
@@ -445,7 +506,7 @@
             conversationPanel.scrollTop = conversationPanel.scrollHeight;
         }
 
-        function analyzeSentence(text) {
+        function analyzeSentence(text, lang) {
             const translationPanel = document.getElementById('translationPanel');
             translationPanel.innerHTML = ''; // Clear previous content
             
@@ -459,20 +520,60 @@
             const words = text.trim().split(/\s+/);
             
             words.forEach(word => {
+                // Remove punctuation for cleaner analysis
+                const cleanWord = word.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
+                if (!cleanWord) return;
+
                 const span = document.createElement('span');
                 span.className = 'interactive-word';
-                span.innerText = word;
-                span.onclick = (e) => {
+                span.innerText = word; // Keep original punctuation for display
+                span.style.padding = '2px 5px';
+                span.style.borderRadius = '4px';
+                span.style.cursor = 'pointer';
+                span.style.transition = 'all 0.2s';
+
+                span.onclick = async (e) => {
                     e.stopPropagation();
-                    console.log("Selected word:", word);
+                    console.log("Selected word:", cleanWord);
                     
                     // Visual feedback: Reset others and highlight selected
                     document.querySelectorAll('.interactive-word').forEach(w => {
                         w.style.backgroundColor = '';
                         w.style.color = '';
                     });
-                    span.style.backgroundColor = '#2ed573';
+                    span.style.backgroundColor = '#f1c40f'; // Yellow for processing
                     span.style.color = 'white';
+                    
+                    // Call classification endpoint
+                    const targetLang = lang || 'pl'; // Default to 'pl' if undefined
+                    try {
+                        const response = await fetch(`http://localhost:8000/roots/${targetLang}/classify`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                word: cleanWord,
+                                context: text
+                            })
+                        });
+                        
+                        if (response.ok) {
+                            const result = await response.json();
+                            console.log("Classification result:", result);
+                            span.style.backgroundColor = '#2ed573'; // Green for success
+                            span.title = `Saved as ${result.classification.part_of_speech} (${result.classification.semantic_category})\nTranslation: ${result.classification.translation}`;
+                            
+                            // Optional: Show a small toast or info box
+                            alert(`Saved '${cleanWord}'!\nPOS: ${result.classification.part_of_speech}\nCategory: ${result.classification.semantic_category}\nTranslation: ${result.classification.translation}`);
+                        } else {
+                            console.error("Classification failed");
+                            span.style.backgroundColor = '#e74c3c'; // Red for error
+                        }
+                    } catch (err) {
+                        console.error("Error:", err);
+                        span.style.backgroundColor = '#e74c3c';
+                    }
                 };
                 container.appendChild(span);
             });
