@@ -47,11 +47,13 @@ try:
     print("Loaded Norwegian Voice")
     voices["uk"] = PiperVoice.load("models/uk_UA-lada-x_low.onnx")
     print("Loaded Ukrainian Voice")
+    voices["it"] = PiperVoice.load("models/it_IT-riccardo-x_low.onnx")
+    print("Loaded Italian Voice")
 except Exception as e:
     print(f"Error loading voices: {e}")
 
 # LLM endpoint (Ollama local)
-OLLAMA_URL = "http://localhost:11434/api/generate"
+OLLAMA_URL = "http://localhost:11434/api/chat"
 
 # Audio Configuration
 # Piper models usually output 22050Hz. 
@@ -96,6 +98,8 @@ async def tts(payload: dict):
 @app.websocket("/ws")
 async def websocket_endpoint(ws: WebSocket):
     await ws.accept()
+    chat_history = []
+
     while True:
         message = await ws.receive()
         
@@ -124,11 +128,20 @@ async def websocket_endpoint(ws: WebSocket):
         if not text.strip():
             continue
 
+        # Handle Context Reset
+        if text.strip().lower() == "/reset":
+            chat_history = []
+            print("Context reset.")
+            continue
+
         print(f"User ({detected_lang}): {text}")
         
         # Select Voice based on detected language
         # Default to English if language not supported
         current_voice = voices.get(detected_lang, voices["en"])
+
+        # Update History
+        chat_history.append({"role": "user", "content": text})
 
         # Streaming Pipeline
         # 1. Stream text from LLM
@@ -144,13 +157,17 @@ async def websocket_endpoint(ws: WebSocket):
         system_prompt = (
             f"You are a helpful polyglot language teacher. The user is speaking {detected_lang}. "
             "Reply in the same language. Keep your answers concise and conversational (1-2 sentences). "
-            "If the user makes a grammar mistake, gently correct it before answering."
+            "If the user makes a grammar mistake, gently correct it before answering. "
+            "IMPORTANT: Do not use characters from other scripts (e.g. no Chinese characters if speaking Italian). "
+            "Only use the alphabet appropriate for the target language."
         )
+
+        # Construct messages
+        messages = [{"role": "system", "content": system_prompt}] + chat_history
 
         payload = {
             "model": model_name, 
-            "prompt": text, 
-            "system": system_prompt,
+            "messages": messages, 
             "stream": True
         }
         
@@ -165,6 +182,7 @@ async def websocket_endpoint(ws: WebSocket):
         sentence_endings = re.compile(r'[.!?]+')
         
         current_sentence = ""
+        full_response = ""
         
         try:
             with requests.post(OLLAMA_URL, json=payload, stream=True) as r:
@@ -172,26 +190,29 @@ async def websocket_endpoint(ws: WebSocket):
                     if chunk:
                         try:
                             j = json.loads(chunk.decode()) # ollama returns valid json objects per line
-                            token = j.get("response", "")
                             
-                            current_sentence += token
-                            
-                            # Check if we have a full sentence
-                            if sentence_endings.search(token):
-                                # We found a sentence ending in this token
-                                # It's a heuristic, but works for simple TTS streaming
-                                to_speak = current_sentence.strip()
-                                if to_speak:
-                                    print(f"Speaking ({detected_lang}): {to_speak}")
-                                    # Generate audio for this sentence
-                                    pcm = await run_in_threadpool(synthesize_audio, to_speak, current_voice)
-                                    if len(pcm) > 0:
-                                        buf = io.BytesIO()
-                                        sf.write(buf, pcm, PLAYBACK_SAMPLE_RATE, format="WAV")
-                                        audio_bytes = buf.getvalue()
-                                        await ws.send_text(base64.b64encode(audio_bytes).decode())
+                            # Adjust for chat API format
+                            if "message" in j and "content" in j["message"]:
+                                token = j["message"]["content"]
+                                current_sentence += token
+                                full_response += token
                                 
-                                current_sentence = ""
+                                # Check if we have a full sentence
+                                if sentence_endings.search(token):
+                                    # We found a sentence ending in this token
+                                    # It's a heuristic, but works for simple TTS streaming
+                                    to_speak = current_sentence.strip()
+                                    if to_speak:
+                                        print(f"Speaking ({detected_lang}): {to_speak}")
+                                        # Generate audio for this sentence
+                                        pcm = await run_in_threadpool(synthesize_audio, to_speak, current_voice)
+                                        if len(pcm) > 0:
+                                            buf = io.BytesIO()
+                                            sf.write(buf, pcm, PLAYBACK_SAMPLE_RATE, format="WAV")
+                                            audio_bytes = buf.getvalue()
+                                            await ws.send_text(base64.b64encode(audio_bytes).decode())
+                                    
+                                    current_sentence = ""
                                 
                         except Exception as e:
                             print(f"Error parsing chunk: {e}")
@@ -205,6 +226,9 @@ async def websocket_endpoint(ws: WebSocket):
                     sf.write(buf, pcm, PLAYBACK_SAMPLE_RATE, format="WAV")
                     audio_bytes = buf.getvalue()
                     await ws.send_text(base64.b64encode(audio_bytes).decode())
+            
+            # Append assistant response to history
+            chat_history.append({"role": "assistant", "content": full_response})
                     
         except Exception as e:
             print(f"LLM Error: {e}")
