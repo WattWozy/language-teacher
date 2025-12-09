@@ -1,5 +1,6 @@
 import os
 import sys
+from langdetect import detect
 
 # Add NVIDIA library paths to PATH for Windows
 if sys.platform == "win32":
@@ -36,13 +37,30 @@ except Exception as e:
     whisper = WhisperModel("small", device="cpu", compute_type="int8")
 
 # Load Piper
-#voice = PiperVoice.load("models/en_US-amy.onnx")
-voice = PiperVoice.load("models/en_US-amy-low.onnx")
+voices = {}
+try:
+    voices["en"] = PiperVoice.load("models/en_US-amy-low.onnx")
+    print("Loaded English Voice")
+    voices["pl"] = PiperVoice.load("models/pl_PL-gosia-medium.onnx")
+    print("Loaded Polish Voice")
+    voices["no"] = PiperVoice.load("models/no_NO-talesyntese-medium.onnx")
+    print("Loaded Norwegian Voice")
+    voices["uk"] = PiperVoice.load("models/uk_UA-lada-x_low.onnx")
+    print("Loaded Ukrainian Voice")
+except Exception as e:
+    print(f"Error loading voices: {e}")
 
 # LLM endpoint (Ollama local)
 OLLAMA_URL = "http://localhost:11434/api/generate"
 
-def synthesize_audio(text):
+# Audio Configuration
+# Piper models usually output 22050Hz. 
+# Lowering this value (e.g. to 18000-20000) will make the voice sound "deeper" and "slower".
+PLAYBACK_SAMPLE_RATE = 20000 # Lower sample rate = Deeper/Darker pitch
+
+def synthesize_audio(text, voice):
+    # Note: The python piper-tts library version we are using does not support 'length_scale' in synthesize()
+    # We rely on PLAYBACK_SAMPLE_RATE to achieve the slower/darker effect.
     chunks = list(voice.synthesize(text))
     if chunks:
         return np.concatenate([chunk.audio_int16_array for chunk in chunks])
@@ -63,45 +81,78 @@ async def stt(audio: UploadFile):
 async def chat(payload: dict):
     prompt = payload["prompt"]
 
-    r = requests.post(OLLAMA_URL, json={"model": "phi3", "prompt": prompt}, stream=True)
+    r = requests.post(OLLAMA_URL, json={"model": "qwen2.5", "prompt": prompt}, stream=True)
     out = ""
 @app.post("/tts")
 async def tts(payload: dict):
     text = payload["text"]
-    pcm = await run_in_threadpool(synthesize_audio, text)
+    # Default to English for simple endpoint
+    pcm = await run_in_threadpool(synthesize_audio, text, voices["en"])
 
     buf = io.BytesIO()
-    sf.write(buf, pcm, 22050, format="WAV")
+    sf.write(buf, pcm, PLAYBACK_SAMPLE_RATE, format="WAV")
     return buf.getvalue()
 
 @app.websocket("/ws")
 async def websocket_endpoint(ws: WebSocket):
     await ws.accept()
     while True:
-        data = await ws.receive_bytes()  # receive raw audio
+        message = await ws.receive()
         
-        # STT (Run in thread)
-        def transcribe(data):
-            segments, _ = whisper.transcribe(io.BytesIO(data))
-            return " ".join([seg.text for seg in segments])
+        text = ""
+        detected_lang = "en"
+
+        if "bytes" in message:
+            data = message["bytes"]
+            # STT (Run in thread)
+            result = {"text": "", "lang": "en"}
+            def transcribe(data):
+                segments, info = whisper.transcribe(io.BytesIO(data))
+                result["lang"] = info.language
+                return " ".join([seg.text for seg in segments])
+            
+            text = await run_in_threadpool(transcribe, data)
+            detected_lang = result["lang"]
         
-        text = await run_in_threadpool(transcribe, data)
+        elif "text" in message:
+            text = message["text"]
+            try:
+                detected_lang = detect(text)
+            except:
+                detected_lang = "en"
+        
         if not text.strip():
             continue
 
-        print(f"User: {text}")
+        print(f"User ({detected_lang}): {text}")
+        
+        # Select Voice based on detected language
+        # Default to English if language not supported
+        current_voice = voices.get(detected_lang, voices["en"])
 
         # Streaming Pipeline
         # 1. Stream text from LLM
         # 2. Buffer into sentences
         # 3. TTS each sentence
         # 4. Stream audio back
-        # Use a smaller model for speed if possible, e.g., "qwen2.5:3b" or "phi3.5"
-        # Ensure you have pulled the model: `ollama pull llama3.2`
-        model_name = "llama3.2" 
         
-        payload = {"model": model_name, "prompt": text, "stream": True}
-        payload = {"model": model_name, "prompt": text, "stream": True}
+        # RECOMMENDATION: Use 'qwen2.5' for better Polyglot support (Polish, Swedish, etc.)
+        # Make sure to run: `ollama pull qwen2.5`
+        model_name = "qwen2.5" 
+        
+        # System prompt to define the persona
+        system_prompt = (
+            f"You are a helpful polyglot language teacher. The user is speaking {detected_lang}. "
+            "Reply in the same language. Keep your answers concise and conversational (1-2 sentences). "
+            "If the user makes a grammar mistake, gently correct it before answering."
+        )
+
+        payload = {
+            "model": model_name, 
+            "prompt": text, 
+            "system": system_prompt,
+            "stream": True
+        }
         
         # We need to run the request in a thread, but iterate the response
         # Since requests.post with stream=True returns an iterator, we can't easily 
@@ -131,12 +182,12 @@ async def websocket_endpoint(ws: WebSocket):
                                 # It's a heuristic, but works for simple TTS streaming
                                 to_speak = current_sentence.strip()
                                 if to_speak:
-                                    print(f"Speaking: {to_speak}")
+                                    print(f"Speaking ({detected_lang}): {to_speak}")
                                     # Generate audio for this sentence
-                                    pcm = await run_in_threadpool(synthesize_audio, to_speak)
+                                    pcm = await run_in_threadpool(synthesize_audio, to_speak, current_voice)
                                     if len(pcm) > 0:
                                         buf = io.BytesIO()
-                                        sf.write(buf, pcm, 22050, format="WAV")
+                                        sf.write(buf, pcm, PLAYBACK_SAMPLE_RATE, format="WAV")
                                         audio_bytes = buf.getvalue()
                                         await ws.send_text(base64.b64encode(audio_bytes).decode())
                                 
@@ -148,10 +199,10 @@ async def websocket_endpoint(ws: WebSocket):
             # Process any remaining text
             if current_sentence.strip():
                 print(f"Speaking (final): {current_sentence}")
-                pcm = await run_in_threadpool(synthesize_audio, current_sentence)
+                pcm = await run_in_threadpool(synthesize_audio, current_sentence, current_voice)
                 if len(pcm) > 0:
                     buf = io.BytesIO()
-                    sf.write(buf, pcm, 22050, format="WAV")
+                    sf.write(buf, pcm, PLAYBACK_SAMPLE_RATE, format="WAV")
                     audio_bytes = buf.getvalue()
                     await ws.send_text(base64.b64encode(audio_bytes).decode())
                     
