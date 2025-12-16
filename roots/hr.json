@@ -1,0 +1,109 @@
+{
+    "propn": {
+        "general": {
+            "przykład": {
+                "translation": "przykład",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "przykład"
+                ],
+                "metadata": {
+                    "lemma": "przykład",
+                    "pos_full": "NNP",
+                    "morphology": {
+                        "Number": "Sing"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "nową": {
+                "translation": "nową",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "nową"
+                ],
+                "metadata": {
+                    "lemma": "nową",
+                    "pos_full": "NNP",
+                    "morphology": {
+                        "Number": "Sing"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "imprezę": {
+                "translation": "imprezę",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "imprezę"
+                ],
+                "metadata": {
+                    "lemma": "imprezę",
+                    "pos_full": "NNP",
+                    "morphology": {
+                        "Number": "Sing"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            }
+        }
+    },
+    "verb": {
+        "general": {
+            "spotkałem": {
+                "translation": "spotkałem",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "spotkałem"
+                ],
+                "metadata": {
+                    "lemma": "spotkałem",
+                    "pos_full": "VB",
+                    "morphology": {
+                        "VerbForm": "Inf"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            }
+        }
+    },
+    "noun": {
+        "general": {
+            "sztukę": {
+                "translation": "sztukę",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "sztukę"
+                ],
+                "metadata": {
+                    "lemma": "sztukę",
+                    "pos_full": "NNS",
+                    "morphology": {
+                        "Number": "Plur"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collected Words</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            padding: 20px;
+            color: #333;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+        h1 { 
+            text-align: center; 
+            color: #2c3e50; 
+            margin-bottom: 1.5rem;
+        }
+        .controls {
+            margin-bottom: 30px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        select {
+            padding: 10px 15px;
+            font-size: 16px;
+            border-radius: 20px;
+            border: 2px solid #e0e0e0;
+            outline: none;
+            transition: border-color 0.2s;
+            background-color: white;
+            cursor: pointer;
+        }
+        select:focus {
+            border-color: #5352ed;
+        }
+        .word-group {
+            margin-bottom: 40px;
+        }
+        .pos-title {
+            font-size: 1.5em;
+            color: #5352ed;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+        .category-title {
+            font-size: 1.1em;
+            color: #2ed573;
+            margin: 20px 0 15px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .words-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .word-card {
+            background: #f8f9fa;
+            border-radius: 16px;
+            padding: 20px;
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+        }
+        .word-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            border-color: #5352ed;
+        }
+        .word-main {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+        .word-translation {
+            color: #5352ed;
+            font-weight: 500;
+            margin-bottom: 12px;
+            font-size: 1.1em;
+        }
+        .word-meta {
+            font-size: 0.85em;
+            color: #95a5a6;
+            line-height: 1.4;
+        }
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 20px;
+            text-decoration: none;
+            color: #5352ed;
+            font-weight: bold;
+            padding: 10px 20px;
+            background: rgba(83, 82, 237, 0.1);
+            border-radius: 20px;
+            transition: all 0.2s;
+        }
+        .back-btn:hover { 
+            background: #5352ed;
+            color: white;
+        }
+
+        /* Dark Mode */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #121212;
+                color: #e0e0e0;
+            }
+            .container {
+                background: #1e1e1e;
+                box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+            }
+            h1 { color: #ecf0f1; }
+            select {
+                background-color: #2d2d2d;
+                border-color: #404040;
+                color: white;
+            }
+            .word-card {
+                background: #2d2d2d;
+                border-color: #404040;
+            }
+            .word-main { color: #e0e0e0; }
+            .word-translation { color: #81c784; }
+            .pos-title { 
+                color: #81c784; 
+                border-bottom-color: #404040;
+            }
+            .category-title { color: #5352ed; }
+            .back-btn {
+                background: rgba(255, 255, 255, 0.1);
+                color: #e0e0e0;
+            }
+            .back-btn:hover {
+                background: #5352ed;
+                color: white;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="client.html" class="back-btn">← Back to Assistant</a>
+        <h1>Collected Words</h1>
+        
+        <div class="controls">
+            <label for="langSelect">Language: </label>
+            <select id="langSelect" onchange="loadWords()">
+                <option value="pl">Polish (pl)</option>
+                <option value="en">English (en)</option>
+                <option value="it">Italian (it)</option>
+                <option value="no">Norwegian (no)</option>
+                <option value="uk">Ukrainian (uk)</option>
+            </select>
+        </div>
+
+        <div id="content">Loading...</div>
+    </div>
+
+    <script>
+        // Check URL params for language
+        const urlParams = new URLSearchParams(window.location.search);
+        const langParam = urlParams.get('lang');
+        if (langParam) {
+            const select = document.getElementById('langSelect');
+            if (select.querySelector(`option[value="${langParam}"]`)) {
+                select.value = langParam;
+            } else {
+                // Add option if not exists
+                const opt = document.createElement('option');
+                opt.value = langParam;
+                opt.text = langParam;
+                select.add(opt);
+                select.value = langParam;
+            }
+        }
+
+        async function loadWords() {
+            const lang = document.getElementById('langSelect').value;
+            const contentDiv = document.getElementById('content');
+            contentDiv.innerHTML = '<div style="text-align:center">Loading...</div>';
+
+            try {
+                const response = await fetch(`http://localhost:8000/roots/${lang}.json`);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                renderData(data);
+            } catch (e) {
+                console.error("Error loading words:", e);
+                contentDiv.innerHTML = `<div style="color:red; text-align:center">Error loading words for language '${lang}'.<br>Make sure the file exists and the server is running.</div>`;
+            }
+        }
+
+        function renderData(data) {
+            const contentDiv = document.getElementById('content');
+            contentDiv.innerHTML = '';
+
+            if (Object.keys(data).length === 0) {
+                contentDiv.innerHTML = '<div style="text-align:center">No words collected yet.</div>';
+                return;
+            }
+
+            // Iterate over Parts of Speech
+            for (const [pos, categories] of Object.entries(data)) {
+                const posSection = document.createElement('div');
+                posSection.className = 'word-group';
+                
+                const posTitle = document.createElement('div');
+                posTitle.className = 'pos-title';
+                posTitle.textContent = pos;
+                posSection.appendChild(posTitle);
+
+                // Iterate over Semantic Categories
+                for (const [category, words] of Object.entries(categories)) {
+                    const catTitle = document.createElement('div');
+                    catTitle.className = 'category-title';
+                    catTitle.textContent = category;
+                    posSection.appendChild(catTitle);
+
+                    const grid = document.createElement('div');
+                    grid.className = 'words-grid';
+
+                    // Iterate over Words
+                    for (const [wordText, details] of Object.entries(words)) {
+                        const card = document.createElement('div');
+                        card.className = 'word-card';
+                        
+                        const main = document.createElement('div');
+                        main.className = 'word-main';
+                        main.textContent = wordText;
+                        
+                        const trans = document.createElement('div');
+                        trans.className = 'word-translation';
+                        trans.textContent = details.translation || '(No translation)';
+
+                        const meta = document.createElement('div');
+                        meta.className = 'word-meta';
+                        if (details.definition) {
+                            meta.innerHTML += `<div>Def: ${details.definition}</div>`;
+                        }
+                        if (details.metadata && details.metadata.lemma) {
+                             meta.innerHTML += `<div>Lemma: ${details.metadata.lemma}</div>`;
+                        }
+
+                        card.appendChild(main);
+                        card.appendChild(trans);
+                        card.appendChild(meta);
+                        grid.appendChild(card);
+                    }
+                    posSection.appendChild(grid);
+                }
+                contentDiv.appendChild(posSection);
+            }
+        }
+
+        // Initial load
+        loadWords();
+    </script>
+</body>
+</html>

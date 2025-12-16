@@ -31,6 +31,8 @@ import spacy
 import nltk
 from nltk.corpus import wordnet as wn
 import sentencepiece as spm
+import argostranslate.package
+import argostranslate.translate
 
 # Download WordNet if needed
 nltk.download("wordnet", quiet=True)
@@ -84,6 +86,23 @@ def get_subwords(lang: str, word: str):
         return []
     return sp.encode(word, out_type=str)
 
+def translate_text(text: str, from_code: str, to_code: str = "en"):
+    try:
+        # Argos Translate expects installed packages
+        # We assume setup_argos.py has been run
+        installed_languages = argostranslate.translate.get_installed_languages()
+        from_lang = next((x for x in installed_languages if x.code == from_code), None)
+        to_lang = next((x for x in installed_languages if x.code == to_code), None)
+        
+        if from_lang and to_lang:
+            translation = from_lang.get_translation(to_lang)
+            if translation:
+                return translation.translate(text)
+        return text # Fallback to original
+    except Exception as e:
+        print(f"Translation error: {e}")
+        return text
+
 # --------------------------------------------------
 
 app.add_middleware(
@@ -112,6 +131,38 @@ class WordInput(BaseModel):
 class ClassifyRequest(BaseModel):
     word: str
     context: Optional[str] = ""
+
+class TranslateRequest(BaseModel):
+    text: str
+    from_lang: str
+    to_lang: str = "en"
+
+@app.post("/translate/sentence")
+async def translate_sentence(req: TranslateRequest):
+    # 1. Full Sentence Translation
+    full_translation = translate_text(req.text, req.from_lang, req.to_lang)
+    
+    # 2. Word-by-word Translation
+    # Split by whitespace, but keep punctuation attached or separate?
+    # For simplicity, we'll just split by whitespace and clean punctuation for translation
+    words = req.text.split()
+    word_translations = []
+    
+    for w in words:
+        clean_w = re.sub(r"[:;.,!?\")(/=£$'*´`§<>_\-]", "", w)
+        if not clean_w:
+            word_translations.append({"original": w, "translated": ""})
+            continue
+            
+        # Translate individual word
+        # Note: Context-less word translation can be inaccurate, but it's what was requested
+        trans = translate_text(clean_w, req.from_lang, req.to_lang)
+        word_translations.append({"original": w, "translated": trans})
+        
+    return {
+        "full_translation": full_translation,
+        "words": word_translations
+    }
 
 def save_word_to_file(filename: str, word_input: WordInput):
     file_path = os.path.join("roots", filename)
@@ -270,6 +321,12 @@ async def add_word(filename: str, word_input: WordInput):
 async def classify_and_add_word(filename: str, req: ClassifyRequest):
     # Mechanical Analysis ONLY (No LLM)
     
+    # Clean the word based on user requirements
+    # User list: :;.,!?")(/=£$'*´`§<>-_
+    clean_word = re.sub(r"[:;.,!?\")(/=£$'*´`§<>_\-]", "", req.word)
+    if not clean_word.strip():
+         raise HTTPException(status_code=400, detail="Empty word after cleaning")
+    
     # 1. Determine Language
     # We try to map the filename (e.g. 'pl', 'en') to a language code
     lang_code = filename.lower()
@@ -285,7 +342,7 @@ async def classify_and_add_word(filename: str, req: ClassifyRequest):
         raise HTTPException(status_code=500, detail=f"No NLP model available for language '{lang_code}'")
 
     # 2. Run Analysis
-    doc = nlp(req.word)
+    doc = nlp(clean_word)
     if len(doc) == 0:
          raise HTTPException(status_code=400, detail="Empty word provided")
          
@@ -297,16 +354,17 @@ async def classify_and_add_word(filename: str, req: ClassifyRequest):
     meanings = get_meanings(lemma)
     synonyms = get_synonyms(lemma)
     antonyms = get_antonyms(lemma)
-    subwords = get_subwords(lang_code, req.word)
+    subwords = get_subwords(lang_code, clean_word)
     
     # 4. Construct WordInput
     # Since we don't have an LLM to give us a "Semantic Category" (like 'food'),
     # we will default to 'general' or try to use the POS as a sub-category.
-    # We also don't have a translation engine here, so 'translation' might be empty 
-    # or we use the lemma.
+    
+    # Use Argos Translate for the translation field
+    translation = translate_text(clean_word, lang_code, "en")
     
     word_data = WordData(
-        translation="", # Mechanical tools don't translate without a translation model
+        translation=translation, 
         definition=meanings[0] if meanings else "",
         tags=synonyms[:5], # Use synonyms as tags
         forms=[token.text], # Add original form
@@ -322,7 +380,7 @@ async def classify_and_add_word(filename: str, req: ClassifyRequest):
     )
     
     word_input = WordInput(
-        word=req.word,
+        word=clean_word,
         part_of_speech=pos, # e.g. NOUN, VERB
         semantic_category="general", # Mechanical limitation: hard to categorize semantically without LLM/WordNet hypernyms
         data=word_data
@@ -338,7 +396,7 @@ async def classify_and_add_word(filename: str, req: ClassifyRequest):
             "classification": {
                 "part_of_speech": pos,
                 "semantic_category": "general",
-                "translation": "",
+                "translation": translation,
                 "definition": word_data.definition,
                 "tags": word_data.tags
             }, 

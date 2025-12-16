@@ -8,8 +8,18 @@ import os
 
 # Download WordNet if needed
 nltk.download("wordnet", quiet=True)
+nltk.download("omw-1.4", quiet=True)
 
 app = FastAPI()
+
+# Map ISO 639-1 to WordNet language codes
+WN_LANG_MAP = {
+    "en": "eng",
+    "es": "spa",
+    "it": "ita",
+    "nb": "nob",
+    "pl": "pol"
+}
 
 # Load spaCy multilingual models
 LANG_MODELS = {
@@ -37,27 +47,42 @@ class WordRequest(BaseModel):
 
 # ---------- Helper functions ----------
 
-def get_meanings(lemma: str):
-    synsets = wn.synsets(lemma)
+def get_meanings(lemma: str, lang: str):
+    wn_lang = WN_LANG_MAP.get(lang, "eng")
+    try:
+        synsets = wn.synsets(lemma, lang=wn_lang)
+    except:
+        return []
+        
     if not synsets:
         return []
     return list({s.definition() for s in synsets})
 
 
-def get_synonyms(lemma: str):
-    synsets = wn.synsets(lemma)
+def get_synonyms(lemma: str, lang: str):
+    wn_lang = WN_LANG_MAP.get(lang, "eng")
+    try:
+        synsets = wn.synsets(lemma, lang=wn_lang)
+    except:
+        return []
+        
     out = set()
     for s in synsets:
-        for l in s.lemmas():
+        for l in s.lemmas(lang=wn_lang):
             out.add(l.name())
     return list(out)
 
 
-def get_antonyms(lemma: str):
-    synsets = wn.synsets(lemma)
+def get_antonyms(lemma: str, lang: str):
+    wn_lang = WN_LANG_MAP.get(lang, "eng")
+    try:
+        synsets = wn.synsets(lemma, lang=wn_lang)
+    except:
+        return []
+        
     out = set()
     for s in synsets:
-        for l in s.lemmas():
+        for l in s.lemmas(lang=wn_lang):
             if l.antonyms():
                 out.add(l.antonyms()[0].name())
     return list(out)
@@ -90,12 +115,12 @@ def analyze(req: WordRequest):
         "lang": lang,
         "analysis": {
             "lemma": lemma,
-            "pos": token.pos_,
+            "pos": token.pos_,  # Added UPOS
             "pos_full": token.tag_ if token.tag_ else "",
             "morphology": token.morph.to_dict(),
-            "meanings": get_meanings(lemma),
-            "synonyms": get_synonyms(lemma),
-            "antonyms": get_antonyms(lemma),
+            "meanings": get_meanings(lemma, lang),
+            "synonyms": get_synonyms(lemma, lang),
+            "antonyms": get_antonyms(lemma, lang),
             "subwords": get_subwords(lang, req.word)
         }
     }

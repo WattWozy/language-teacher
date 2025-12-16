@@ -1,39 +1,166 @@
 {
-    "part": {
+    "verb": {
         "general": {
-            "również": {
+            "błogosławi": {
                 "translation": "",
                 "definition": "",
                 "tags": [],
                 "forms": [
-                    "również"
+                    "błogosławi"
                 ],
                 "metadata": {
-                    "lemma": "również",
+                    "lemma": "błogosławić",
                     "pos_full": "QUB",
-                    "morphology": {},
+                    "morphology": {
+                        "Aspect": "Imp",
+                        "Mood": "Ind",
+                        "Number": "Sing",
+                        "Person": "3",
+                        "Tense": "Pres",
+                        "VerbForm": "Fin",
+                        "Voice": "Act"
+                    },
                     "meanings": [],
                     "synonyms": [],
                     "antonyms": [],
                     "subwords": []
                 }
-            }
-        }
-    },
-    "adv": {
-        "general": {
-            "bardzo": {
+            },
+            "przygotować": {
                 "translation": "",
                 "definition": "",
                 "tags": [],
                 "forms": [
-                    "bardzo"
+                    "przygotować"
                 ],
                 "metadata": {
-                    "lemma": "bardzo",
-                    "pos_full": "SUBST",
+                    "lemma": "przygotować",
+                    "pos_full": "INF",
                     "morphology": {
-                        "Degree": "Pos"
+                        "Aspect": "Perf",
+                        "VerbForm": "Inf",
+                        "Voice": "Act"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "pytajemy": {
+                "translation": "",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "pytajemy"
+                ],
+                "metadata": {
+                    "lemma": "pytajemy",
+                    "pos_full": "_SP",
+                    "morphology": {
+                        "Aspect": "Perf",
+                        "Mood": "Ind",
+                        "Number": "Plur",
+                        "Person": "1",
+                        "Tense": "Fut",
+                        "VerbForm": "Fin",
+                        "Voice": "Act"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "kontynuować": {
+                "translation": "",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "kontynuować"
+                ],
+                "metadata": {
+                    "lemma": "kontynuować",
+                    "pos_full": "INF",
+                    "morphology": {
+                        "Aspect": "Imp",
+                        "VerbForm": "Inf",
+                        "Voice": "Act"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "mierzymy": {
+                "translation": "",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "mierzymy"
+                ],
+                "metadata": {
+                    "lemma": "mierzyć",
+                    "pos_full": "FIN",
+                    "morphology": {
+                        "Aspect": "Imp",
+                        "Mood": "Ind",
+                        "Number": "Plur",
+                        "Person": "1",
+                        "Tense": "Pres",
+                        "VerbForm": "Fin",
+                        "Voice": "Act"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "oznacza": {
+                "translation": "",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "oznacza"
+                ],
+                "metadata": {
+                    "lemma": "oznaczać",
+                    "pos_full": "FIN",
+                    "morphology": {
+                        "Aspect": "Imp",
+                        "Mood": "Ind",
+                        "Number": "Sing",
+                        "Person": "3",
+                        "Tense": "Pres",
+                        "VerbForm": "Fin",
+                        "Voice": "Act"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "planuje": {
+                "translation": "",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "planuje"
+                ],
+                "metadata": {
+                    "lemma": "planować",
+                    "pos_full": "FIN",
+                    "morphology": {
+                        "Aspect": "Imp",
+                        "Mood": "Ind",
+                        "Number": "Sing",
+                        "Person": "3",
+                        "Tense": "Pres",
+                        "VerbForm": "Fin",
+                        "Voice": "Act"
                     },
                     "meanings": [],
                     "synonyms": [],
@@ -45,15 +172,79 @@
     },
     "adj": {
         "general": {
-            "długi": {
+            "polskiego": {
                 "translation": "",
                 "definition": "",
                 "tags": [],
                 "forms": [
-                    "długi"
+                    "polskiego"
                 ],
                 "metadata": {
-                    "lemma": "dług",
+                    "lemma": "polski",
+                    "pos_full": "ADJ",
+                    "morphology": {
+                        "Animacy": "Inan",
+                        "Case": "Gen",
+                        "Degree": "Pos",
+                        "Gender": "Masc",
+                        "Number": "Sing"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "dojrzałych": {
+                "translation": "",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "Dojrzałych"
+                ],
+                "metadata": {
+                    "lemma": "Dojrzałych",
+                    "pos_full": "ADJ",
+                    "morphology": {
+                        "Case": "Gen",
+                        "Degree": "Pos",
+                        "Gender": "Fem",
+                        "Number": "Plur"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "prostu": {
+                "translation": "",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "prostu"
+                ],
+                "metadata": {
+                    "lemma": "prosty",
+                    "pos_full": "ADJ",
+                    "morphology": {
+                        "PrepCase": "Pre"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "spokojny": {
+                "translation": "",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "spokojny"
+                ],
+                "metadata": {
+                    "lemma": "spokojny",
                     "pos_full": "ADJ",
                     "morphology": {
                         "Animacy": "Inan",
@@ -67,23 +258,500 @@
                     "antonyms": [],
                     "subwords": []
                 }
+            },
+            "ciekawe": {
+                "translation": "interesting",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "ciekawe"
+                ],
+                "metadata": {
+                    "lemma": "ciekawy",
+                    "pos_full": "ADJ",
+                    "morphology": {
+                        "Case": "Nom",
+                        "Degree": "Pos",
+                        "Gender": "Neut",
+                        "Number": "Sing"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
             }
         }
     },
     "noun": {
         "general": {
-            "dzień": {
+            "języka": {
                 "translation": "",
                 "definition": "",
                 "tags": [],
                 "forms": [
-                    "dzień"
+                    "języka"
                 ],
                 "metadata": {
-                    "lemma": "dzień",
-                    "pos_full": "ADJ",
+                    "lemma": "język",
+                    "pos_full": "SUBST",
                     "morphology": {
                         "Animacy": "Inan",
+                        "Case": "Gen",
+                        "Gender": "Masc",
+                        "Number": "Sing"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "nauki": {
+                "translation": "",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "nauki"
+                ],
+                "metadata": {
+                    "lemma": "nauka",
+                    "pos_full": "SUBST",
+                    "morphology": {
+                        "Case": "Gen",
+                        "Gender": "Fem",
+                        "Number": "Sing"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "zamieszanie": {
+                "translation": "",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "zamieszanie"
+                ],
+                "metadata": {
+                    "lemma": "zamieszanie",
+                    "pos_full": "ADJ",
+                    "morphology": {
+                        "Case": "Nom",
+                        "Gender": "Neut",
+                        "Number": "Sing"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "słownictwach": {
+                "translation": "",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "słownictwach"
+                ],
+                "metadata": {
+                    "lemma": "słownictwa",
+                    "pos_full": "ADJ",
+                    "morphology": {
+                        "Case": "Loc",
+                        "Gender": "Fem",
+                        "Number": "Plur"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "zasobach": {
+                "translation": "",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "zasobach"
+                ],
+                "metadata": {
+                    "lemma": "zasobach",
+                    "pos_full": "FIN",
+                    "morphology": {
+                        "Animacy": "Inan",
+                        "Case": "Loc",
+                        "Gender": "Masc",
+                        "Number": "Plur"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "podstaw": {
+                "translation": "",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "podstaw"
+                ],
+                "metadata": {
+                    "lemma": "podstawa",
+                    "pos_full": "ADJ",
+                    "morphology": {
+                        "Case": "Gen",
+                        "Gender": "Fem",
+                        "Number": "Plur"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "ochotę": {
+                "translation": "",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "ochotę"
+                ],
+                "metadata": {
+                    "lemma": "ochota",
+                    "pos_full": "SUBST",
+                    "morphology": {
+                        "Case": "Acc",
+                        "Gender": "Fem",
+                        "Number": "Sing"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "zdania": {
+                "translation": "",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "zdania"
+                ],
+                "metadata": {
+                    "lemma": "zdanie",
+                    "pos_full": "ADJ",
+                    "morphology": {
+                        "Case": "Nom",
+                        "Gender": "Neut",
+                        "Number": "Plur"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "uczucia": {
+                "translation": "",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "Uczucia"
+                ],
+                "metadata": {
+                    "lemma": "uczucie",
+                    "pos_full": "SUBST",
+                    "morphology": {
+                        "Case": "Nom",
+                        "Gender": "Neut",
+                        "Number": "Plur"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "skali": {
+                "translation": "",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "skali"
+                ],
+                "metadata": {
+                    "lemma": "skala",
+                    "pos_full": "ADJ",
+                    "morphology": {
+                        "Case": "Gen",
+                        "Gender": "Fem",
+                        "Number": "Sing"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "zdaniu": {
+                "translation": "",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "zdaniu"
+                ],
+                "metadata": {
+                    "lemma": "zdanie",
+                    "pos_full": "_SP",
+                    "morphology": {
+                        "Case": "Dat",
+                        "Gender": "Neut",
+                        "Number": "Sing"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "przyszłości": {
+                "translation": "",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "przyszłości"
+                ],
+                "metadata": {
+                    "lemma": "przyszłość",
+                    "pos_full": "ADJ",
+                    "morphology": {
+                        "Case": "Gen",
+                        "Gender": "Fem",
+                        "Number": "Sing"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "przyjaciółmi": {
+                "translation": "",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "przyjaciółmi"
+                ],
+                "metadata": {
+                    "lemma": "przyjaciel",
+                    "pos_full": "ADJ",
+                    "morphology": {
+                        "Animacy": "Hum",
+                        "Case": "Ins",
+                        "Gender": "Masc",
+                        "Number": "Plur"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "sztuka": {
+                "translation": "Art",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "Sztuka"
+                ],
+                "metadata": {
+                    "lemma": "sztuka",
+                    "pos_full": "SUBST",
+                    "morphology": {
+                        "Case": "Nom",
+                        "Gender": "Fem",
+                        "Number": "Sing"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "zdażenia": {
+                "translation": "events",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "zdażenia"
+                ],
+                "metadata": {
+                    "lemma": "zdażenie",
+                    "pos_full": "SUBST",
+                    "morphology": {
+                        "Case": "Nom",
+                        "Gender": "Neut",
+                        "Number": "Plur"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            }
+        }
+    },
+    "pron": {
+        "general": {
+            "się": {
+                "translation": "",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "się"
+                ],
+                "metadata": {
+                    "lemma": "się",
+                    "pos_full": "QUB",
+                    "morphology": {
+                        "PronType": "Prs",
+                        "Reflex": "Yes"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "kogo": {
+                "translation": "",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "kogo"
+                ],
+                "metadata": {
+                    "lemma": "kto",
+                    "pos_full": "SUBST",
+                    "morphology": {
+                        "Animacy": "Hum",
+                        "Case": "Gen",
+                        "Gender": "Masc",
+                        "Number": "Sing",
+                        "PronType": "Int"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "ciebie": {
+                "translation": "",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "ciebie"
+                ],
+                "metadata": {
+                    "lemma": "ty",
+                    "pos_full": "QUB",
+                    "morphology": {
+                        "Animacy": "Hum",
+                        "Case": "Acc",
+                        "Gender": "Masc",
+                        "Number": "Sing",
+                        "Person": "2",
+                        "PronType": "Prs",
+                        "Variant": "Long"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            }
+        }
+    },
+    "part": {
+        "general": {
+            "czy": {
+                "translation": "",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "Czy"
+                ],
+                "metadata": {
+                    "lemma": "czy",
+                    "pos_full": "QUB",
+                    "morphology": {
+                        "PartType": "Int"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "naćmianoć": {
+                "translation": "",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "naćmianoć"
+                ],
+                "metadata": {
+                    "lemma": "naćmianoć",
+                    "pos_full": "ADJ",
+                    "morphology": {},
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            }
+        }
+    },
+    "cconj": {
+        "general": {
+            "lub": {
+                "translation": "",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "lub"
+                ],
+                "metadata": {
+                    "lemma": "lub",
+                    "pos_full": "CONJ",
+                    "morphology": {},
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            }
+        }
+    },
+    "propn": {
+        "general": {
+            "spróbuj": {
+                "translation": "",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "Spróbuj"
+                ],
+                "metadata": {
+                    "lemma": "Spróbuj",
+                    "pos_full": "SUBST",
+                    "morphology": {
+                        "Animacy": "Hum",
                         "Case": "Nom",
                         "Gender": "Masc",
                         "Number": "Sing"
@@ -96,29 +764,111 @@
             }
         }
     },
-    "verb": {
+    "adv": {
         "general": {
-            "mam": {
+            "ponownie": {
                 "translation": "",
                 "definition": "",
                 "tags": [],
                 "forms": [
-                    "mam"
+                    "ponownie"
                 ],
                 "metadata": {
-                    "lemma": "mieć",
-                    "pos_full": "FIN",
+                    "lemma": "ponownie",
+                    "pos_full": "ADJ",
                     "morphology": {
-                        "Aspect": "Imp",
-                        "Mood": "Ind",
-                        "Number": "Sing",
-                        "Person": "1",
-                        "Tense": "Pres",
-                        "VerbForm": "Fin",
-                        "Voice": "Act"
+                        "Degree": "Pos"
                     },
                     "meanings": [],
                     "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "gdy": {
+                "translation": "",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "Gdy"
+                ],
+                "metadata": {
+                    "lemma": "gdy",
+                    "pos_full": "ADJ",
+                    "morphology": {},
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            }
+        }
+    },
+    "aux": {
+        "general": {
+            "to": {
+                "translation": "",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "to"
+                ],
+                "metadata": {
+                    "lemma": "to",
+                    "pos_full": "QUB",
+                    "morphology": {
+                        "Mood": "Ind",
+                        "Tense": "Pres",
+                        "VerbForm": "Fin",
+                        "VerbType": "Quasi"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            }
+        }
+    },
+    "adp": {
+        "general": {
+            "po": {
+                "translation": "",
+                "definition": "a radioactive metallic element that is similar to tellurium and bismuth; occurs in uranium ores but can be produced by bombarding bismuth with neutrons in a nuclear reactor",
+                "tags": [
+                    "Post_Office",
+                    "Po",
+                    "polonium",
+                    "P.O.",
+                    "petty_officer"
+                ],
+                "forms": [
+                    "po"
+                ],
+                "metadata": {
+                    "lemma": "po",
+                    "pos_full": "PREP",
+                    "morphology": {
+                        "AdpType": "Prep"
+                    },
+                    "meanings": [
+                        "a radioactive metallic element that is similar to tellurium and bismuth; occurs in uranium ores but can be produced by bombarding bismuth with neutrons in a nuclear reactor",
+                        "a European river; flows into the Adriatic Sea",
+                        "a noncommissioned officer in the Navy or Coast Guard with a rank comparable to sergeant in the Army",
+                        "an independent agency of the federal government responsible for mail delivery (and sometimes telecommunications) between individuals and businesses in the United States"
+                    ],
+                    "synonyms": [
+                        "Post_Office",
+                        "Po",
+                        "polonium",
+                        "P.O.",
+                        "petty_officer",
+                        "Po_River",
+                        "PO",
+                        "atomic_number_84",
+                        "US_Post_Office",
+                        "United_States_Post_Office"
+                    ],
                     "antonyms": [],
                     "subwords": []
                 }
