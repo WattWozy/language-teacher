@@ -801,6 +801,25 @@
                     "antonyms": [],
                     "subwords": []
                 }
+            },
+            "oczywiście": {
+                "translation": "Of course.",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "oczywiście"
+                ],
+                "metadata": {
+                    "lemma": "oczywiście",
+                    "pos_full": "ADJ",
+                    "morphology": {
+                        "Degree": "Pos"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
             }
         }
     },

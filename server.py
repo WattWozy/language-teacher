@@ -440,6 +440,32 @@ async def search_word(filename: str, query: str):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/sentences")
+async def list_sentence_files():
+    try:
+        files = [f.replace(".json", "") for f in os.listdir("sentences") if f.endswith(".json")]
+        return files
+    except Exception as e:
+        return []
+
+@app.get("/sentences/{filename}")
+async def get_root_file(filename: str):
+    file_path = os.path.join("sentences", filename)
+    if not file_path.endswith(".json"):
+         file_path += ".json"
+         
+    if not os.path.exists(file_path):
+        raise HTTPException(status_code=404, detail="File not found")
+    
+    try:
+        with open(file_path, "r", encoding="utf-8") as f:
+            content = f.read()
+            if not content:
+                return {}
+            return json.loads(content)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 @app.websocket("/ws")
 async def websocket_endpoint(ws: WebSocket):
     await ws.accept()

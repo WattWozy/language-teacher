@@ -1,0 +1,139 @@
+[
+  {
+    "id": "pl_001",
+    "text": "Wczoraj czytałem ciekawą książkę",
+    "tokens": [
+      {
+        "text": "Wczoraj",
+        "lemma": "wczoraj",
+        "pos": "ADV",
+        "dep": "advmod",
+        "head": 1
+      },
+      {
+        "text": "czytałem",
+        "lemma": "czytać",
+        "pos": "VERB",
+        "dep": "root",
+        "head": null,
+        "tense": "PAST",
+        "person": "1",
+        "number": "SG",
+        "gender": "M"
+      },
+      {
+        "text": "ciekawą",
+        "lemma": "ciekawy",
+        "pos": "ADJ",
+        "dep": "amod",
+        "head": 3,
+        "gender": "F",
+        "number": "SG",
+        "case": "ACC"
+      },
+      {
+        "text": "książkę",
+        "lemma": "książka",
+        "pos": "NOUN",
+        "dep": "obj",
+        "head": 1,
+        "gender": "F",
+        "number": "SG",
+        "case": "ACC"
+      }
+    ]
+  },
+  {
+    "id": "pl_002",
+    "text": "Ona będzie jutro pracować",
+    "tokens": [
+      {
+        "text": "Ona",
+        "lemma": "ona",
+        "pos": "PRON",
+        "dep": "nsubj",
+        "head": 2,
+        "person": "3",
+        "number": "SG",
+        "gender": "F"
+      },
+      {
+        "text": "będzie",
+        "lemma": "być",
+        "pos": "AUX",
+        "dep": "aux",
+        "head": 3,
+        "tense": "FUTURE",
+        "person": "3",
+        "number": "SG"
+      },
+      {
+        "text": "jutro",
+        "lemma": "jutro",
+        "pos": "ADV",
+        "dep": "advmod",
+        "head": 3
+      },
+      {
+        "text": "pracować",
+        "lemma": "pracować",
+        "pos": "VERB",
+        "dep": "root",
+        "head": null
+      }
+    ]
+  },
+  {
+    "id": "pl_003",
+    "text": "Małe dziecko bawi się zabawką",
+    "tokens": [
+      {
+        "text": "Małe",
+        "lemma": "mały",
+        "pos": "ADJ",
+        "dep": "amod",
+        "head": 1,
+        "gender": "N",
+        "number": "SG",
+        "case": "NOM"
+      },
+      {
+        "text": "dziecko",
+        "lemma": "dziecko",
+        "pos": "NOUN",
+        "dep": "nsubj",
+        "head": 2,
+        "gender": "N",
+        "number": "SG",
+        "case": "NOM"
+      },
+      {
+        "text": "bawi",
+        "lemma": "bawić",
+        "pos": "VERB",
+        "dep": "root",
+        "head": null,
+        "tense": "PRESENT",
+        "person": "3",
+        "number": "SG"
+      },
+      {
+        "text": "się",
+        "lemma": "się",
+        "pos": "PRON",
+        "dep": "expl",
+        "head": 2
+      },
+      {
+        "text": "zabawką",
+        "lemma": "zabawka",
+        "pos": "NOUN",
+        "dep": "obl",
+        "head": 2,
+        "gender": "F",
+        "number": "SG",
+        "case": "INS"
+      }
+    ]
+  }
+]

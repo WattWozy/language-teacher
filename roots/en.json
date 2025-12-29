@@ -1,0 +1,69 @@
+{
+    "noun": {
+        "general": {
+            "pisać": {
+                "translation": "pisać",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "pisać"
+                ],
+                "metadata": {
+                    "lemma": "pisać",
+                    "pos_full": "NNS",
+                    "morphology": {
+                        "Number": "Plur"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            }
+        }
+    },
+    "adv": {
+        "general": {
+            "pisarz": {
+                "translation": "pisarz",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "pisarz"
+                ],
+                "metadata": {
+                    "lemma": "pisarz",
+                    "pos_full": "RB",
+                    "morphology": {},
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            }
+        }
+    },
+    "pron": {
+        "general": {
+            "pisemny": {
+                "translation": "pisemny",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "pisemny"
+                ],
+                "metadata": {
+                    "lemma": "pisemny",
+                    "pos_full": "PRP",
+                    "morphology": {
+                        "PronType": "Prs"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            }
+        }
+    }
+}
