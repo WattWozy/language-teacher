@@ -1,4 +1,7 @@
 import os
+# Force anonymous access to Hugging Face Hub (avoids expired token issues)
+os.environ["HF_HUB_DISABLE_IMPLICIT_TOKEN"] = "1"
+
 import sys
 from langdetect import detect
 
@@ -229,7 +232,7 @@ OLLAMA_URL = "http://localhost:11434/api/chat"
 OLLAMA_GENERATE_URL = "http://localhost:11434/api/generate"
 
 # Model Configuration
-CHAT_MODEL = "qwen2.5:7b"       # Smart, conversational (slower)
+CHAT_MODEL = "qwen2.5:latest"       # Smart, conversational (slower)
 CLASSIFY_MODEL = "qwen2.5:0.5b" # Fast, structured tasks (faster)
 
 # Audio Configuration
@@ -491,6 +494,14 @@ async def websocket_endpoint(ws: WebSocket):
         
         elif "text" in message:
             text = message["text"]
+            # Safeguard: if the text is JSON-wrapped (e.g. {"text": "..."}), unwrap it
+            try:
+                data = json.loads(text)
+                if isinstance(data, dict) and "text" in data:
+                    text = data["text"]
+            except:
+                pass
+            
             try:
                 detected_lang = detect(text)
             except:
@@ -524,7 +535,8 @@ async def websocket_endpoint(ws: WebSocket):
         
         # RECOMMENDATION: Use 'qwen2.5' for better Polyglot support (Polish, Swedish, etc.)
         # Make sure to run: `ollama pull qwen2.5`
-        model_name = "qwen2.5" 
+        # Use the configured chat model
+        model_name = CHAT_MODEL 
         
         # System prompt to define the persona
         system_prompt = (

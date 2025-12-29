@@ -167,6 +167,61 @@
                     "antonyms": [],
                     "subwords": []
                 }
+            },
+            "oto": {
+                "translation": "Oto",
+                "definition": "a member of the Siouan people inhabiting the valleys of the Platte and Missouri rivers in Nebraska",
+                "tags": [
+                    "Oto",
+                    "Otoe"
+                ],
+                "forms": [
+                    "Oto"
+                ],
+                "metadata": {
+                    "lemma": "oto",
+                    "pos_full": "ADJ",
+                    "morphology": {
+                        "Mood": "Ind",
+                        "Tense": "Pres",
+                        "VerbForm": "Fin",
+                        "VerbType": "Quasi"
+                    },
+                    "meanings": [
+                        "a member of the Siouan people inhabiting the valleys of the Platte and Missouri rivers in Nebraska",
+                        "a dialect of the Chiwere language spoken by the Oto"
+                    ],
+                    "synonyms": [
+                        "Oto",
+                        "Otoe"
+                    ],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "zdobądź": {
+                "translation": "Zdobądź",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "Zdobądź"
+                ],
+                "metadata": {
+                    "lemma": "Zdobądź",
+                    "pos_full": "CONJ",
+                    "morphology": {
+                        "Aspect": "Perf",
+                        "Mood": "Imp",
+                        "Number": "Sing",
+                        "Person": "2",
+                        "VerbForm": "Fin",
+                        "Voice": "Act"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
             }
         }
     },
@@ -274,6 +329,125 @@
                         "Degree": "Pos",
                         "Gender": "Neut",
                         "Number": "Sing"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "wyjątkowe": {
+                "translation": "wyjątkowe",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "wyjątkowe"
+                ],
+                "metadata": {
+                    "lemma": "wyjątkowy",
+                    "pos_full": "ADJ",
+                    "morphology": {
+                        "Case": "Nom",
+                        "Degree": "Pos",
+                        "Gender": "Neut",
+                        "Number": "Sing"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "pewnym": {
+                "translation": "pewnym",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "pewnym"
+                ],
+                "metadata": {
+                    "lemma": "pewien",
+                    "pos_full": "ADJ",
+                    "morphology": {
+                        "Aspect": "Perf",
+                        "Case": "Ins",
+                        "Gender": "Neut",
+                        "Number": "Sing",
+                        "Polarity": "Pos",
+                        "VerbForm": "Part",
+                        "Voice": "Pass"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "tradycyjnego": {
+                "translation": "tradycyjnego",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "tradycyjnego"
+                ],
+                "metadata": {
+                    "lemma": "tradycyjny",
+                    "pos_full": "ADJ",
+                    "morphology": {
+                        "Animacy": "Inan",
+                        "Case": "Gen",
+                        "Degree": "Pos",
+                        "Gender": "Masc",
+                        "Number": "Sing"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "emocjonującego": {
+                "translation": "emocjonującego",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "emocjonującego"
+                ],
+                "metadata": {
+                    "lemma": "emocjonować",
+                    "pos_full": "ADJ",
+                    "morphology": {
+                        "Animacy": "Inan",
+                        "Aspect": "Imp",
+                        "Case": "Gen",
+                        "Gender": "Masc",
+                        "Number": "Sing",
+                        "Polarity": "Pos",
+                        "VerbForm": "Part",
+                        "Voice": "Act"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "miłych": {
+                "translation": "miłych",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "miłych"
+                ],
+                "metadata": {
+                    "lemma": "miły",
+                    "pos_full": "ADJ",
+                    "morphology": {
+                        "Animacy": "Inan",
+                        "Case": "Gen",
+                        "Degree": "Pos",
+                        "Gender": "Masc",
+                        "Number": "Plur"
                     },
                     "meanings": [],
                     "synonyms": [],
@@ -602,6 +776,254 @@
                     "antonyms": [],
                     "subwords": []
                 }
+            },
+            "przykłady": {
+                "translation": "przykłady",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "przykłady"
+                ],
+                "metadata": {
+                    "lemma": "przykład",
+                    "pos_full": "ADJ",
+                    "morphology": {
+                        "Animacy": "Inan",
+                        "Case": "Nom",
+                        "Gender": "Masc",
+                        "Number": "Plur"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "słowa": {
+                "translation": "słowa",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "słowa"
+                ],
+                "metadata": {
+                    "lemma": "słowo",
+                    "pos_full": "ADJ",
+                    "morphology": {
+                        "Case": "Nom",
+                        "Gender": "Neut",
+                        "Number": "Plur"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "książka": {
+                "translation": "książka",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "książka"
+                ],
+                "metadata": {
+                    "lemma": "książka",
+                    "pos_full": "SUBST",
+                    "morphology": {
+                        "Case": "Nom",
+                        "Gender": "Fem",
+                        "Number": "Sing"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "książkę": {
+                "translation": "książkę",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "książkę"
+                ],
+                "metadata": {
+                    "lemma": "książka",
+                    "pos_full": "SUBST",
+                    "morphology": {
+                        "Case": "Acc",
+                        "Gender": "Fem",
+                        "Number": "Sing"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "doświadczenie": {
+                "translation": "doświadczenie",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "doświadczenie"
+                ],
+                "metadata": {
+                    "lemma": "doświadczenie",
+                    "pos_full": "ADJ",
+                    "morphology": {
+                        "Case": "Nom",
+                        "Gender": "Neut",
+                        "Number": "Sing"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "podróż": {
+                "translation": "Podróż",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "Podróż"
+                ],
+                "metadata": {
+                    "lemma": "podróż",
+                    "pos_full": "SUBST",
+                    "morphology": {
+                        "Case": "Nom",
+                        "Gender": "Fem",
+                        "Number": "Sing"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "sposobem": {
+                "translation": "sposobem",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "sposobem"
+                ],
+                "metadata": {
+                    "lemma": "sposób",
+                    "pos_full": "CONJ",
+                    "morphology": {
+                        "Animacy": "Inan",
+                        "Case": "Ins",
+                        "Gender": "Masc",
+                        "Number": "Sing"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "doświadczenia": {
+                "translation": "doświadczenia",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "doświadczenia"
+                ],
+                "metadata": {
+                    "lemma": "doświadczenie",
+                    "pos_full": "ADJ",
+                    "morphology": {
+                        "Case": "Nom",
+                        "Gender": "Neut",
+                        "Number": "Plur"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "festiwalu": {
+                "translation": "festiwalu",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "festiwalu"
+                ],
+                "metadata": {
+                    "lemma": "festiwal",
+                    "pos_full": "SUBST",
+                    "morphology": {
+                        "Animacy": "Inan",
+                        "Case": "Gen",
+                        "Gender": "Masc",
+                        "Number": "Sing"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "snów": {
+                "translation": "snów",
+                "definition": "a fractional monetary unit of Japan and Indonesia and Cambodia; equal to one hundredth of a yen or rupiah or riel",
+                "tags": [
+                    "sen"
+                ],
+                "forms": [
+                    "snów"
+                ],
+                "metadata": {
+                    "lemma": "sen",
+                    "pos_full": "SUBST",
+                    "morphology": {
+                        "Animacy": "Inan",
+                        "Case": "Gen",
+                        "Gender": "Masc",
+                        "Number": "Plur"
+                    },
+                    "meanings": [
+                        "a fractional monetary unit of Japan and Indonesia and Cambodia; equal to one hundredth of a yen or rupiah or riel"
+                    ],
+                    "synonyms": [
+                        "sen"
+                    ],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "sen": {
+                "translation": "Sen",
+                "definition": "a fractional monetary unit of Japan and Indonesia and Cambodia; equal to one hundredth of a yen or rupiah or riel",
+                "tags": [
+                    "sen"
+                ],
+                "forms": [
+                    "Sen"
+                ],
+                "metadata": {
+                    "lemma": "sen",
+                    "pos_full": "SUBST",
+                    "morphology": {
+                        "Animacy": "Inan",
+                        "Case": "Nom",
+                        "Gender": "Masc",
+                        "Number": "Sing"
+                    },
+                    "meanings": [
+                        "a fractional monetary unit of Japan and Indonesia and Cambodia; equal to one hundredth of a yen or rupiah or riel"
+                    ],
+                    "synonyms": [
+                        "sen"
+                    ],
+                    "antonyms": [],
+                    "subwords": []
+                }
             }
         }
     },
@@ -674,6 +1096,71 @@
                     "antonyms": [],
                     "subwords": []
                 }
+            },
+            "tego": {
+                "translation": "tego",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "tego"
+                ],
+                "metadata": {
+                    "lemma": "to",
+                    "pos_full": "ADJ",
+                    "morphology": {
+                        "Case": "Gen",
+                        "Gender": "Neut",
+                        "Number": "Sing",
+                        "PronType": "Dem"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "ci": {
+                "translation": "Ci",
+                "definition": "one of four playing cards in a deck with ten pips on the face",
+                "tags": [
+                    "tenner",
+                    "ten-spot",
+                    "10",
+                    "ten",
+                    "x"
+                ],
+                "forms": [
+                    "Ci"
+                ],
+                "metadata": {
+                    "lemma": "ten",
+                    "pos_full": "ADJ",
+                    "morphology": {
+                        "Animacy": "Hum",
+                        "Case": "Dat",
+                        "Gender": "Masc",
+                        "Number": "Sing",
+                        "Person": "2",
+                        "PronType": "Prs",
+                        "Variant": "Short"
+                    },
+                    "meanings": [
+                        "one of four playing cards in a deck with ten pips on the face",
+                        "the cardinal number that is the sum of nine and one; the base of the decimal system",
+                        "being one more than nine"
+                    ],
+                    "synonyms": [
+                        "tenner",
+                        "ten-spot",
+                        "10",
+                        "ten",
+                        "x",
+                        "decade",
+                        "X"
+                    ],
+                    "antonyms": [],
+                    "subwords": []
+                }
             }
         }
     },
@@ -714,6 +1201,23 @@
                     "antonyms": [],
                     "subwords": []
                 }
+            },
+            "naprawdę": {
+                "translation": "naprawdę",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "naprawdę"
+                ],
+                "metadata": {
+                    "lemma": "naprawdę",
+                    "pos_full": "ADJ",
+                    "morphology": {},
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
             }
         }
     },
@@ -732,6 +1236,46 @@
                     "morphology": {},
                     "meanings": [],
                     "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "i": {
+                "translation": "i",
+                "definition": "a nonmetallic element belonging to the halogens; used especially in medicine and photography and in dyes; occurs naturally only in combination in small quantities (as in sea water or rocks)",
+                "tags": [
+                    "iodin",
+                    "atomic_number_53",
+                    "I",
+                    "ane",
+                    "1"
+                ],
+                "forms": [
+                    "i"
+                ],
+                "metadata": {
+                    "lemma": "i",
+                    "pos_full": "CONJ",
+                    "morphology": {},
+                    "meanings": [
+                        "a nonmetallic element belonging to the halogens; used especially in medicine and photography and in dyes; occurs naturally only in combination in small quantities (as in sea water or rocks)",
+                        "the 9th letter of the Roman alphabet",
+                        "used of a single unit or thing; not two or more",
+                        "the smallest whole number or a numeral representing this number"
+                    ],
+                    "synonyms": [
+                        "iodin",
+                        "atomic_number_53",
+                        "I",
+                        "ane",
+                        "1",
+                        "single",
+                        "one",
+                        "ace",
+                        "unity",
+                        "i",
+                        "iodine"
+                    ],
                     "antonyms": [],
                     "subwords": []
                 }
@@ -755,6 +1299,28 @@
                         "Case": "Nom",
                         "Gender": "Masc",
                         "Number": "Sing"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "fermínach": {
+                "translation": "Fermínach",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "Fermínach"
+                ],
+                "metadata": {
+                    "lemma": "Fermínach",
+                    "pos_full": "SUBST",
+                    "morphology": {
+                        "Animacy": "Hum",
+                        "Case": "Gen",
+                        "Gender": "Masc",
+                        "Number": "Plur"
                     },
                     "meanings": [],
                     "synonyms": [],
@@ -820,6 +1386,44 @@
                     "antonyms": [],
                     "subwords": []
                 }
+            },
+            "uczestniczenie": {
+                "translation": "Uczestniczenie",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "Uczestniczenie"
+                ],
+                "metadata": {
+                    "lemma": "uczestniczenie",
+                    "pos_full": "ADJ",
+                    "morphology": {
+                        "Degree": "Pos"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "dobrze": {
+                "translation": "dobrze",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "dobrze"
+                ],
+                "metadata": {
+                    "lemma": "dobrze",
+                    "pos_full": "ADJ",
+                    "morphology": {
+                        "Degree": "Pos"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
             }
         }
     },
@@ -840,6 +1444,31 @@
                         "Tense": "Pres",
                         "VerbForm": "Fin",
                         "VerbType": "Quasi"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "jest": {
+                "translation": "jest",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "jest"
+                ],
+                "metadata": {
+                    "lemma": "być",
+                    "pos_full": "FIN",
+                    "morphology": {
+                        "Aspect": "Imp",
+                        "Mood": "Ind",
+                        "Number": "Sing",
+                        "Person": "3",
+                        "Tense": "Pres",
+                        "VerbForm": "Fin",
+                        "Voice": "Act"
                     },
                     "meanings": [],
                     "synonyms": [],
@@ -888,6 +1517,58 @@
                         "US_Post_Office",
                         "United_States_Post_Office"
                     ],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "na": {
+                "translation": "na",
+                "definition": "a silvery soft waxy metallic element of the alkali metal group; occurs abundantly in natural compounds (especially in salt water); burns with a yellow flame and reacts violently in water; occurs in sea water and in the mineral halite (rock salt)",
+                "tags": [
+                    "Na",
+                    "atomic_number_11",
+                    "sodium"
+                ],
+                "forms": [
+                    "na"
+                ],
+                "metadata": {
+                    "lemma": "na",
+                    "pos_full": "PREP",
+                    "morphology": {
+                        "AdpType": "Prep"
+                    },
+                    "meanings": [
+                        "a silvery soft waxy metallic element of the alkali metal group; occurs abundantly in natural compounds (especially in salt water); burns with a yellow flame and reacts violently in water; occurs in sea water and in the mineral halite (rock salt)"
+                    ],
+                    "synonyms": [
+                        "Na",
+                        "atomic_number_11",
+                        "sodium"
+                    ],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            }
+        }
+    },
+    "x": {
+        "general": {
+            "san": {
+                "translation": "San",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "San"
+                ],
+                "metadata": {
+                    "lemma": "San",
+                    "pos_full": "SUBST",
+                    "morphology": {
+                        "Foreign": "Yes"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
                     "antonyms": [],
                     "subwords": []
                 }

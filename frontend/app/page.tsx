@@ -42,12 +42,22 @@ export default function Home() {
       const audio = new Audio(nextAudio);
 
       audio.onended = () => {
-        setAudioQueue(prev => prev.slice(1)); // Remove played
+        isPlaying.current = false;
+        setAudioQueue(prev => {
+          const next = prev.slice(1);
+          if (next.length === 0) setUiState('ready');
+          return next;
+        });
       };
 
       audio.play().catch(e => {
         console.error("Playback failed", e);
-        setAudioQueue(prev => prev.slice(1));
+        isPlaying.current = false;
+        setAudioQueue(prev => {
+          const next = prev.slice(1);
+          if (next.length === 0) setUiState('ready');
+          return next;
+        });
       });
     };
 
@@ -141,7 +151,7 @@ export default function Home() {
   };
 
   return (
-    <>
+    <div style={{ display: 'flex', alignItems: 'center', minHeight: 'calc(100vh - 80px)', width: 'auto', gap: '40px' }}>
       <div className={`container ${uiState === 'recording' ? 'state-recording' : ''}`} id="app">
         <VoiceVisualizer state={uiState} />
         <ChatInput onSend={handleSendMessage} />
@@ -171,6 +181,6 @@ export default function Home() {
       <div style={{ position: 'fixed', top: 10, left: 10, fontSize: '0.8rem', color: '#ccc' }}>
         Status: {status}
       </div>
-    </>
+    </div>
   );
 }

@@ -49,7 +49,7 @@ export function useWebSocket(url: string) {
 
     const sendMessage = useCallback((text: string) => {
         if (ws.current?.readyState === WebSocket.OPEN) {
-            ws.current.send(JSON.stringify({ text }));
+            ws.current.send(text);
         }
     }, []);
 

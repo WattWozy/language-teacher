@@ -8,7 +8,15 @@ A low-latency, local voice assistant using **FastAPI**, **Faster Whisper**, **Ol
 *   [Ollama](https://ollama.com/)
 *   NVIDIA GPU (Recommended for best performance)
 
-## Setup
+## Quick Start (Windows)
+
+Simply run the startup script:
+```powershell
+.\start.ps1
+```
+This will automatically set up the Python environment, install dependencies, and launch both servers.
+
+## Setup (Manual)
 
 1.  **Prepare Ollama**
     Install Ollama and pull the model:
@@ -33,15 +41,22 @@ A low-latency, local voice assistant using **FastAPI**, **Faster Whisper**, **Ol
 
 ## Usage
 
+### Backend
 1.  **Start the Server**
     ```bash
+    cd backend
     uvicorn server:app --host 0.0.0.0 --port 8000
     ```
 
-2.  **Open Client**
-    Open `client.html` in your web browser.
+### Frontend
+1.  **Start the Client**
+    ```bash
+    cd frontend
+    npm install
+    npm run dev
+    ```
+2.  **Open App**
+    Open `http://localhost:3000` in your web browser.
 
-3.  **Talk**
-    *   Hold **Spacebar** to record.
-    *   Release to send.
-    *   Listen to the streamed response.
+## Legacy Client
+*   You can still open `client.html` directly in your browser as a fallback, but the Next.js frontend is recommended.
