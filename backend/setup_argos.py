@@ -10,7 +10,7 @@ def install_languages():
     # We need pairs to/from English for all of these to support pivoting.
     # Codes: it, es, no (or nb?), sv, en, de, pl
     
-    target_languages = ["it", "es", "no", "sv", "de", "pl", "nb", "nn"] # Added nb/nn for Norwegian just in case
+    target_languages = ["it", "es", "no", "sv", "de", "pl", "nb", "nn", "uk"] # Added uk for Ukrainian
     
     pairs_to_install = []
     

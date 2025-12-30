@@ -1,0 +1,248 @@
+{
+    "adj": {
+        "general": {
+            "назвалибysь": {
+                "translation": "name of the vest",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "назвалибysь"
+                ],
+                "metadata": {
+                    "lemma": "назвалибysь",
+                    "pos_full": "ADJ",
+                    "morphology": {
+                        "Case": "Nom",
+                        "Gender": "Fem",
+                        "Number": "Sing"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            }
+        }
+    },
+    "pron": {
+        "general": {
+            "ви": {
+                "translation": "you",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "ви"
+                ],
+                "metadata": {
+                    "lemma": "ви",
+                    "pos_full": "PRON",
+                    "morphology": {
+                        "Animacy": "Anim",
+                        "Case": "Nom",
+                        "Number": "Plur",
+                        "Person": "2",
+                        "PronType": "Prs"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "ми": {
+                "translation": "we",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "ми"
+                ],
+                "metadata": {
+                    "lemma": "ми",
+                    "pos_full": "PRON",
+                    "morphology": {
+                        "Animacy": "Anim",
+                        "Case": "Nom",
+                        "Number": "Plur",
+                        "Person": "1",
+                        "PronType": "Prs"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            }
+        }
+    },
+    "sconj": {
+        "general": {
+            "як": {
+                "translation": "how",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "як"
+                ],
+                "metadata": {
+                    "lemma": "як",
+                    "pos_full": "SCONJ",
+                    "morphology": {},
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "що": {
+                "translation": "What",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "Що"
+                ],
+                "metadata": {
+                    "lemma": "що",
+                    "pos_full": "SCONJ",
+                    "morphology": {},
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            }
+        }
+    },
+    "verb": {
+        "general": {
+            "познайомитися": {
+                "translation": "Nice to meet you.",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "познайомитися"
+                ],
+                "metadata": {
+                    "lemma": "познайомитися",
+                    "pos_full": "VERB",
+                    "morphology": {
+                        "Aspect": "Perf",
+                        "VerbForm": "Inf"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "можемо": {
+                "translation": "We can.",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "можемо"
+                ],
+                "metadata": {
+                    "lemma": "могти",
+                    "pos_full": "VERB",
+                    "morphology": {
+                        "Aspect": "Imp",
+                        "Mood": "Ind",
+                        "Number": "Plur",
+                        "Person": "1",
+                        "Tense": "Pres",
+                        "VerbForm": "Fin"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "вивчати": {
+                "translation": "Learn",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "вивчати"
+                ],
+                "metadata": {
+                    "lemma": "вивчати",
+                    "pos_full": "VERB",
+                    "morphology": {
+                        "Aspect": "Imp",
+                        "VerbForm": "Inf"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            }
+        }
+    },
+    "propn": {
+        "general": {
+            "ніклас": {
+                "translation": "Nice",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "Ніклас"
+                ],
+                "metadata": {
+                    "lemma": "ніклас",
+                    "pos_full": "PROPN",
+                    "morphology": {
+                        "Animacy": "Anim",
+                        "Case": "Nom",
+                        "Gender": "Masc",
+                        "NameType": "Giv",
+                        "Number": "Sing"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            }
+        }
+    },
+    "adv": {
+        "general": {
+            "сьогодні": {
+                "translation": "today",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "сьогодні"
+                ],
+                "metadata": {
+                    "lemma": "сьогодні",
+                    "pos_full": "ADV",
+                    "morphology": {},
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "разом": {
+                "translation": "together",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "разом"
+                ],
+                "metadata": {
+                    "lemma": "разом",
+                    "pos_full": "ADV",
+                    "morphology": {},
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            }
+        }
+    }
+}

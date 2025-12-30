@@ -12,7 +12,8 @@ def install_spacy_models():
         "it_core_news_sm",
         "de_core_news_sm",
         "es_core_news_sm",
-        "nb_core_news_sm" # Norwegian Bokmål
+        "nb_core_news_sm", # Norwegian Bokmål
+        "uk_core_news_sm"  # Ukrainian
     ]
     
     python_exe = sys.executable
@@ -30,7 +31,7 @@ def install_argos_packages():
     argostranslate.package.update_package_index()
     available_packages = argostranslate.package.get_available_packages()
     
-    target_languages = ["it", "es", "no", "sv", "de", "pl", "nb", "nn"]
+    target_languages = ["it", "es", "no", "sv", "de", "pl", "nb", "nn", "uk"]
     
     pairs_to_install = []
     for pkg in available_packages:

@@ -60,6 +60,7 @@ def get_nlp(lang_code):
         "es": "es_core_news_sm",
         "nb": "nb_core_news_sm",
         "no": "nb_core_news_sm", # Map 'no' to Bokmål
+        "uk": "uk_core_news_sm", # Added Ukrainian
     }
     
     model_name = spacy_map.get(lang_code)
