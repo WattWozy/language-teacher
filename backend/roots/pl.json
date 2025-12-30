@@ -2,7 +2,7 @@
     "verb": {
         "general": {
             "błogosławi": {
-                "translation": "",
+                "translation": "Blessed",
                 "definition": "",
                 "tags": [],
                 "forms": [
@@ -27,7 +27,7 @@
                 }
             },
             "przygotować": {
-                "translation": "",
+                "translation": "Prepare",
                 "definition": "",
                 "tags": [],
                 "forms": [
@@ -48,7 +48,7 @@
                 }
             },
             "pytajemy": {
-                "translation": "",
+                "translation": "We ask",
                 "definition": "",
                 "tags": [],
                 "forms": [
@@ -73,7 +73,7 @@
                 }
             },
             "kontynuować": {
-                "translation": "",
+                "translation": "Continue",
                 "definition": "",
                 "tags": [],
                 "forms": [
@@ -94,7 +94,7 @@
                 }
             },
             "mierzymy": {
-                "translation": "",
+                "translation": "measure",
                 "definition": "",
                 "tags": [],
                 "forms": [
@@ -119,7 +119,7 @@
                 }
             },
             "oznacza": {
-                "translation": "",
+                "translation": "means",
                 "definition": "",
                 "tags": [],
                 "forms": [
@@ -144,7 +144,7 @@
                 }
             },
             "planuje": {
-                "translation": "",
+                "translation": "plan",
                 "definition": "",
                 "tags": [],
                 "forms": [
@@ -169,11 +169,10 @@
                 }
             },
             "oto": {
-                "translation": "Oto",
-                "definition": "a member of the Siouan people inhabiting the valleys of the Platte and Missouri rivers in Nebraska",
+                "translation": "here is",
+                "definition": "Used to point something out or introduce something.",
                 "tags": [
-                    "Oto",
-                    "Otoe"
+                    "here"
                 ],
                 "forms": [
                     "Oto"
@@ -200,9 +199,12 @@
                 }
             },
             "zdobądź": {
-                "translation": "Zdobądź",
-                "definition": "",
-                "tags": [],
+                "translation": "get",
+                "definition": "To obtain or acquire something.",
+                "tags": [
+                    "obtain",
+                    "acquire"
+                ],
                 "forms": [
                     "Zdobądź"
                 ],
@@ -222,13 +224,59 @@
                     "antonyms": [],
                     "subwords": []
                 }
+            },
+            "zacząć": {
+                "translation": "start",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "zacząć"
+                ],
+                "metadata": {
+                    "lemma": "zacząć",
+                    "pos_full": "INF",
+                    "morphology": {
+                        "Aspect": "Perf",
+                        "VerbForm": "Inf",
+                        "Voice": "Act"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            },
+            "możemy": {
+                "translation": "We can",
+                "definition": "",
+                "tags": [],
+                "forms": [
+                    "możemy"
+                ],
+                "metadata": {
+                    "lemma": "móc",
+                    "pos_full": "FIN",
+                    "morphology": {
+                        "Aspect": "Imp",
+                        "Mood": "Ind",
+                        "Number": "Plur",
+                        "Person": "1",
+                        "Tense": "Pres",
+                        "VerbForm": "Fin",
+                        "Voice": "Act"
+                    },
+                    "meanings": [],
+                    "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
             }
         }
     },
     "adj": {
         "general": {
             "polskiego": {
-                "translation": "",
+                "translation": "Polish",
                 "definition": "",
                 "tags": [],
                 "forms": [
@@ -251,7 +299,7 @@
                 }
             },
             "dojrzałych": {
-                "translation": "",
+                "translation": "mature",
                 "definition": "",
                 "tags": [],
                 "forms": [
@@ -273,7 +321,7 @@
                 }
             },
             "prostu": {
-                "translation": "",
+                "translation": "just",
                 "definition": "",
                 "tags": [],
                 "forms": [
@@ -292,7 +340,7 @@
                 }
             },
             "spokojny": {
-                "translation": "",
+                "translation": "Calm",
                 "definition": "",
                 "tags": [],
                 "forms": [
@@ -337,9 +385,12 @@
                 }
             },
             "wyjątkowe": {
-                "translation": "wyjątkowe",
-                "definition": "",
-                "tags": [],
+                "translation": "exceptional",
+                "definition": "Unusual; not typical.",
+                "tags": [
+                    "unique",
+                    "special"
+                ],
                 "forms": [
                     "wyjątkowe"
                 ],
@@ -359,9 +410,11 @@
                 }
             },
             "pewnym": {
-                "translation": "pewnym",
-                "definition": "",
-                "tags": [],
+                "translation": "certain",
+                "definition": "Sure to happen; inevitable.",
+                "tags": [
+                    "sure"
+                ],
                 "forms": [
                     "pewnym"
                 ],
@@ -384,9 +437,11 @@
                 }
             },
             "tradycyjnego": {
-                "translation": "tradycyjnego",
-                "definition": "",
-                "tags": [],
+                "translation": "traditional",
+                "definition": "Existing in or as part of a tradition; long-established.",
+                "tags": [
+                    "customary"
+                ],
                 "forms": [
                     "tradycyjnego"
                 ],
@@ -407,9 +462,11 @@
                 }
             },
             "emocjonującego": {
-                "translation": "emocjonującego",
-                "definition": "",
-                "tags": [],
+                "translation": "exciting",
+                "definition": "Causing great enthusiasm and eagerness.",
+                "tags": [
+                    "thrilling"
+                ],
                 "forms": [
                     "emocjonującego"
                 ],
@@ -433,9 +490,12 @@
                 }
             },
             "miłych": {
-                "translation": "miłych",
-                "definition": "",
-                "tags": [],
+                "translation": "nice",
+                "definition": "Pleasant; agreeable; satisfactory.",
+                "tags": [
+                    "pleasant",
+                    "kind"
+                ],
                 "forms": [
                     "miłych"
                 ],
@@ -460,7 +520,7 @@
     "noun": {
         "general": {
             "języka": {
-                "translation": "",
+                "translation": "language",
                 "definition": "",
                 "tags": [],
                 "forms": [
@@ -482,7 +542,7 @@
                 }
             },
             "nauki": {
-                "translation": "",
+                "translation": "Science",
                 "definition": "",
                 "tags": [],
                 "forms": [
@@ -503,7 +563,7 @@
                 }
             },
             "zamieszanie": {
-                "translation": "",
+                "translation": "confusion",
                 "definition": "",
                 "tags": [],
                 "forms": [
@@ -524,7 +584,7 @@
                 }
             },
             "słownictwach": {
-                "translation": "",
+                "translation": "vocabulary",
                 "definition": "",
                 "tags": [],
                 "forms": [
@@ -545,7 +605,7 @@
                 }
             },
             "zasobach": {
-                "translation": "",
+                "translation": "resources",
                 "definition": "",
                 "tags": [],
                 "forms": [
@@ -567,7 +627,7 @@
                 }
             },
             "podstaw": {
-                "translation": "",
+                "translation": "basics",
                 "definition": "",
                 "tags": [],
                 "forms": [
@@ -588,7 +648,7 @@
                 }
             },
             "ochotę": {
-                "translation": "",
+                "translation": "desire",
                 "definition": "",
                 "tags": [],
                 "forms": [
@@ -609,7 +669,7 @@
                 }
             },
             "zdania": {
-                "translation": "",
+                "translation": "sentences",
                 "definition": "",
                 "tags": [],
                 "forms": [
@@ -630,7 +690,7 @@
                 }
             },
             "uczucia": {
-                "translation": "",
+                "translation": "feeling",
                 "definition": "",
                 "tags": [],
                 "forms": [
@@ -651,7 +711,7 @@
                 }
             },
             "skali": {
-                "translation": "",
+                "translation": "scale",
                 "definition": "",
                 "tags": [],
                 "forms": [
@@ -672,7 +732,7 @@
                 }
             },
             "zdaniu": {
-                "translation": "",
+                "translation": "sentence",
                 "definition": "",
                 "tags": [],
                 "forms": [
@@ -693,7 +753,7 @@
                 }
             },
             "przyszłości": {
-                "translation": "",
+                "translation": "the future",
                 "definition": "",
                 "tags": [],
                 "forms": [
@@ -714,7 +774,7 @@
                 }
             },
             "przyjaciółmi": {
-                "translation": "",
+                "translation": "friends",
                 "definition": "",
                 "tags": [],
                 "forms": [
@@ -778,9 +838,12 @@
                 }
             },
             "przykłady": {
-                "translation": "przykłady",
-                "definition": "",
-                "tags": [],
+                "translation": "examples",
+                "definition": "A thing characteristic of its kind or illustrating a general rule.",
+                "tags": [
+                    "sample",
+                    "instance"
+                ],
                 "forms": [
                     "przykłady"
                 ],
@@ -800,8 +863,8 @@
                 }
             },
             "słowa": {
-                "translation": "słowa",
-                "definition": "",
+                "translation": "words",
+                "definition": "A single distinct meaningful element of writing or speech.",
                 "tags": [],
                 "forms": [
                     "słowa"
@@ -821,8 +884,8 @@
                 }
             },
             "książka": {
-                "translation": "książka",
-                "definition": "",
+                "translation": "book",
+                "definition": "A written or printed work consisting of pages glued or sewn together.",
                 "tags": [],
                 "forms": [
                     "książka"
@@ -842,8 +905,8 @@
                 }
             },
             "książkę": {
-                "translation": "książkę",
-                "definition": "",
+                "translation": "book",
+                "definition": "A written or printed work consisting of pages glued or sewn together (accusative).",
                 "tags": [],
                 "forms": [
                     "książkę"
@@ -863,8 +926,8 @@
                 }
             },
             "doświadczenie": {
-                "translation": "doświadczenie",
-                "definition": "",
+                "translation": "experience",
+                "definition": "Practical contact with and observation of facts or events.",
                 "tags": [],
                 "forms": [
                     "doświadczenie"
@@ -884,9 +947,12 @@
                 }
             },
             "podróż": {
-                "translation": "Podróż",
-                "definition": "",
-                "tags": [],
+                "translation": "journey",
+                "definition": "An act of traveling from one place to another.",
+                "tags": [
+                    "trip",
+                    "travel"
+                ],
                 "forms": [
                     "Podróż"
                 ],
@@ -905,9 +971,12 @@
                 }
             },
             "sposobem": {
-                "translation": "sposobem",
-                "definition": "",
-                "tags": [],
+                "translation": "way",
+                "definition": "A method, style, or manner of doing something.",
+                "tags": [
+                    "method",
+                    "manner"
+                ],
                 "forms": [
                     "sposobem"
                 ],
@@ -927,8 +996,8 @@
                 }
             },
             "doświadczenia": {
-                "translation": "doświadczenia",
-                "definition": "",
+                "translation": "experiences",
+                "definition": "Practical contact with and observation of facts or events (plural).",
                 "tags": [],
                 "forms": [
                     "doświadczenia"
@@ -948,8 +1017,8 @@
                 }
             },
             "festiwalu": {
-                "translation": "festiwalu",
-                "definition": "",
+                "translation": "festival",
+                "definition": "A day or period of celebration, typically a religious commemoration.",
                 "tags": [],
                 "forms": [
                     "festiwalu"
@@ -970,10 +1039,10 @@
                 }
             },
             "snów": {
-                "translation": "snów",
-                "definition": "a fractional monetary unit of Japan and Indonesia and Cambodia; equal to one hundredth of a yen or rupiah or riel",
+                "translation": "dreams",
+                "definition": "A series of thoughts, images, and sensations occurring in a person's mind during sleep.",
                 "tags": [
-                    "sen"
+                    "dream"
                 ],
                 "forms": [
                     "snów"
@@ -998,10 +1067,10 @@
                 }
             },
             "sen": {
-                "translation": "Sen",
-                "definition": "a fractional monetary unit of Japan and Indonesia and Cambodia; equal to one hundredth of a yen or rupiah or riel",
+                "translation": "dream",
+                "definition": "A series of thoughts, images, and sensations occurring in a person's mind during sleep.",
                 "tags": [
-                    "sen"
+                    "sleep"
                 ],
                 "forms": [
                     "Sen"
@@ -1030,9 +1099,11 @@
     "pron": {
         "general": {
             "się": {
-                "translation": "",
-                "definition": "",
-                "tags": [],
+                "translation": "self",
+                "definition": "Reflexive pronoun used to indicate that the action of the verb is performed on the subject.",
+                "tags": [
+                    "reflexive"
+                ],
                 "forms": [
                     "się"
                 ],
@@ -1050,7 +1121,7 @@
                 }
             },
             "kogo": {
-                "translation": "",
+                "translation": "who",
                 "definition": "",
                 "tags": [],
                 "forms": [
@@ -1073,7 +1144,7 @@
                 }
             },
             "ciebie": {
-                "translation": "",
+                "translation": "you",
                 "definition": "",
                 "tags": [],
                 "forms": [
@@ -1098,9 +1169,11 @@
                 }
             },
             "tego": {
-                "translation": "tego",
-                "definition": "",
-                "tags": [],
+                "translation": "this",
+                "definition": "Used to identify a specific person or thing close at hand.",
+                "tags": [
+                    "that"
+                ],
                 "forms": [
                     "tego"
                 ],
@@ -1167,7 +1240,7 @@
     "part": {
         "general": {
             "czy": {
-                "translation": "",
+                "translation": "is",
                 "definition": "",
                 "tags": [],
                 "forms": [
@@ -1186,7 +1259,7 @@
                 }
             },
             "naćmianoć": {
-                "translation": "",
+                "translation": "ed",
                 "definition": "",
                 "tags": [],
                 "forms": [
@@ -1203,9 +1276,12 @@
                 }
             },
             "naprawdę": {
-                "translation": "naprawdę",
-                "definition": "",
-                "tags": [],
+                "translation": "really",
+                "definition": "Used to emphasize a statement or response.",
+                "tags": [
+                    "actually",
+                    "indeed"
+                ],
                 "forms": [
                     "naprawdę"
                 ],
@@ -1224,7 +1300,7 @@
     "cconj": {
         "general": {
             "lub": {
-                "translation": "",
+                "translation": "or",
                 "definition": "",
                 "tags": [],
                 "forms": [
@@ -1241,15 +1317,9 @@
                 }
             },
             "i": {
-                "translation": "i",
-                "definition": "a nonmetallic element belonging to the halogens; used especially in medicine and photography and in dyes; occurs naturally only in combination in small quantities (as in sea water or rocks)",
-                "tags": [
-                    "iodin",
-                    "atomic_number_53",
-                    "I",
-                    "ane",
-                    "1"
-                ],
+                "translation": "and",
+                "definition": "Used to connect words of the same part of speech.",
+                "tags": [],
                 "forms": [
                     "i"
                 ],
@@ -1285,7 +1355,7 @@
     "propn": {
         "general": {
             "spróbuj": {
-                "translation": "",
+                "translation": "try",
                 "definition": "",
                 "tags": [],
                 "forms": [
@@ -1333,7 +1403,7 @@
     "adv": {
         "general": {
             "ponownie": {
-                "translation": "",
+                "translation": "again",
                 "definition": "",
                 "tags": [],
                 "forms": [
@@ -1352,7 +1422,7 @@
                 }
             },
             "gdy": {
-                "translation": "",
+                "translation": "when",
                 "definition": "",
                 "tags": [],
                 "forms": [
@@ -1388,9 +1458,11 @@
                 }
             },
             "uczestniczenie": {
-                "translation": "Uczestniczenie",
-                "definition": "",
-                "tags": [],
+                "translation": "participation",
+                "definition": "The action of taking part in something.",
+                "tags": [
+                    "attending"
+                ],
                 "forms": [
                     "Uczestniczenie"
                 ],
@@ -1407,9 +1479,12 @@
                 }
             },
             "dobrze": {
-                "translation": "dobrze",
-                "definition": "",
-                "tags": [],
+                "translation": "well",
+                "definition": "In a good or satisfactory way.",
+                "tags": [
+                    "good",
+                    "ok"
+                ],
                 "forms": [
                     "dobrze"
                 ],
@@ -1430,7 +1505,7 @@
     "aux": {
         "general": {
             "to": {
-                "translation": "",
+                "translation": "This",
                 "definition": "",
                 "tags": [],
                 "forms": [
@@ -1452,9 +1527,11 @@
                 }
             },
             "jest": {
-                "translation": "jest",
-                "definition": "",
-                "tags": [],
+                "translation": "is",
+                "definition": "Third-person singular present of 'być' (to be).",
+                "tags": [
+                    "be"
+                ],
                 "forms": [
                     "jest"
                 ],
@@ -1481,14 +1558,10 @@
     "adp": {
         "general": {
             "po": {
-                "translation": "",
-                "definition": "a radioactive metallic element that is similar to tellurium and bismuth; occurs in uranium ores but can be produced by bombarding bismuth with neutrons in a nuclear reactor",
+                "translation": "after",
+                "definition": "In the time following (an event or another period of time).",
                 "tags": [
-                    "Post_Office",
-                    "Po",
-                    "polonium",
-                    "P.O.",
-                    "petty_officer"
+                    "about"
                 ],
                 "forms": [
                     "po"
@@ -1522,12 +1595,11 @@
                 }
             },
             "na": {
-                "translation": "na",
-                "definition": "a silvery soft waxy metallic element of the alkali metal group; occurs abundantly in natural compounds (especially in salt water); burns with a yellow flame and reacts violently in water; occurs in sea water and in the mineral halite (rock salt)",
+                "translation": "on",
+                "definition": "Physically in contact with and supported by (a surface).",
                 "tags": [
-                    "Na",
-                    "atomic_number_11",
-                    "sodium"
+                    "for",
+                    "at"
                 ],
                 "forms": [
                     "na"
@@ -1569,6 +1641,36 @@
                     },
                     "meanings": [],
                     "synonyms": [],
+                    "antonyms": [],
+                    "subwords": []
+                }
+            }
+        }
+    },
+    "sconj": {
+        "general": {
+            "jak": {
+                "translation": "how",
+                "definition": "In what way or manner; by what means.",
+                "tags": [
+                    "like",
+                    "as"
+                ],
+                "forms": [
+                    "Jak"
+                ],
+                "metadata": {
+                    "lemma": "jak",
+                    "pos_full": "ADV",
+                    "morphology": {},
+                    "meanings": [
+                        "immense East Indian fruit resembling breadfruit; it contains an edible pulp and nutritious seeds that are commonly roasted"
+                    ],
+                    "synonyms": [
+                        "jack",
+                        "jak",
+                        "jackfruit"
+                    ],
                     "antonyms": [],
                     "subwords": []
                 }

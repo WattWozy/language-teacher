@@ -43,16 +43,34 @@ nltk.download("wordnet", quiet=True)
 app = FastAPI()
 
 # --- NLP Models Setup ---
-# Load spaCy multilingual models
+# Load spaCy models on demand
 LANG_MODELS = {}
-try:
-    # Load models if available. User should install them: python -m spacy download en_core_web_sm
-    # We try to load a few common ones.
-    LANG_MODELS["en"] = spacy.load("en_core_web_sm")
-    LANG_MODELS["pl"] = spacy.load("pl_core_news_sm")
-    print("Loaded spaCy models")
-except Exception as e:
-    print(f"Warning: Could not load spaCy models: {e}")
+
+def get_nlp(lang_code):
+    # Map common language codes to spaCy model names
+    spacy_map = {
+        "en": "en_core_web_sm",
+        "pl": "pl_core_news_sm",
+        "it": "it_core_news_sm",
+        "de": "de_core_news_sm",
+        "es": "es_core_news_sm",
+        "nb": "nb_core_news_sm",
+        "no": "nb_core_news_sm", # Map 'no' to Bokmål
+    }
+    
+    model_name = spacy_map.get(lang_code)
+    if not model_name:
+        return None
+        
+    if model_name not in LANG_MODELS:
+        try:
+            print(f"Loading spaCy model: {model_name}")
+            LANG_MODELS[model_name] = spacy.load(model_name)
+        except Exception as e:
+            print(f"Error loading spaCy model {model_name}: {e}")
+            return None
+            
+    return LANG_MODELS[model_name]
 
 # Load SentencePiece models
 SPM_MODELS = {}
@@ -90,17 +108,23 @@ def get_subwords(lang: str, word: str):
     return sp.encode(word, out_type=str)
 
 def translate_text(text: str, from_code: str, to_code: str = "en"):
+    if from_code == to_code:
+        return text
+        
     try:
-        # Argos Translate expects installed packages
-        # We assume setup_argos.py has been run
+        # Normalize language codes (e.g., 'no' -> 'nb' for Argos)
+        argos_from = "nb" if from_code == "no" else from_code
+        
         installed_languages = argostranslate.translate.get_installed_languages()
-        from_lang = next((x for x in installed_languages if x.code == from_code), None)
+        from_lang = next((x for x in installed_languages if x.code == argos_from), None)
         to_lang = next((x for x in installed_languages if x.code == to_code), None)
         
         if from_lang and to_lang:
             translation = from_lang.get_translation(to_lang)
             if translation:
                 return translation.translate(text)
+        
+        print(f"Warning: No translation path found from {argos_from} to {to_code}")
         return text # Fallback to original
     except Exception as e:
         print(f"Translation error: {e}")
@@ -331,50 +355,59 @@ async def classify_and_add_word(filename: str, req: ClassifyRequest):
          raise HTTPException(status_code=400, detail="Empty word after cleaning")
     
     # 1. Determine Language
-    # We try to map the filename (e.g. 'pl', 'en') to a language code
-    lang_code = filename.lower()
-    if lang_code not in LANG_MODELS:
-        # Fallback to English if specific model not loaded, or handle error
-        # For now, we'll try to use English model if available as a fallback for structure,
-        # but ideally we need the specific language model.
-        lang_code = "en" 
+    # Clean language code (e.g. 'pl.json' -> 'pl')
+    lang_code = filename.replace(".json", "").lower()
     
-    nlp = LANG_MODELS.get(lang_code)
+    nlp = get_nlp(lang_code)
     if not nlp:
-        # If absolutely no model, we can't do much mechanically
-        raise HTTPException(status_code=500, detail=f"No NLP model available for language '{lang_code}'")
-
-    # 2. Run Analysis
-    doc = nlp(clean_word)
-    if len(doc) == 0:
-         raise HTTPException(status_code=400, detail="Empty word provided")
-         
-    token = doc[0]
-    lemma = token.lemma_
-    pos = token.pos_
-    
-    # 3. Extract Details
-    meanings = get_meanings(lemma)
-    synonyms = get_synonyms(lemma)
-    antonyms = get_antonyms(lemma)
-    subwords = get_subwords(lang_code, clean_word)
+        # If absolutely no model, we still want to try translating the word
+        print(f"Warning: No NLP model available for language '{lang_code}'. Proceeding with limited analysis.")
+        # Minimal fallback analysis
+        lemma = clean_word.lower()
+        pos = "UNKNOWN"
+        meanings = []
+        synonyms = []
+        antonyms = []
+        subwords = []
+        token_text = clean_word
+        token_tag = ""
+        token_morph = {}
+    else:
+        # 2. Run Analysis
+        doc = nlp(clean_word)
+        if len(doc) == 0:
+             raise HTTPException(status_code=400, detail="Empty word provided")
+             
+        token = doc[0]
+        lemma = token.lemma_
+        pos = token.pos_
+        
+        # 3. Extract Details
+        meanings = get_meanings(lemma)
+        synonyms = get_synonyms(lemma)
+        antonyms = get_antonyms(lemma)
+        subwords = get_subwords(lang_code, clean_word)
+        token_text = token.text
+        token_tag = token.tag_
+        token_morph = token.morph.to_dict()
     
     # 4. Construct WordInput
-    # Since we don't have an LLM to give us a "Semantic Category" (like 'food'),
-    # we will default to 'general' or try to use the POS as a sub-category.
-    
     # Use Argos Translate for the translation field
     translation = translate_text(clean_word, lang_code, "en")
+    
+    # If translation failed or returned same word, mark it
+    if translation.lower() == clean_word.lower() and lang_code != "en":
+        translation = "(No translation)"
     
     word_data = WordData(
         translation=translation, 
         definition=meanings[0] if meanings else "",
-        tags=synonyms[:5], # Use synonyms as tags
-        forms=[token.text], # Add original form
+        tags=synonyms[:5], 
+        forms=[token_text], 
         metadata={
             "lemma": lemma,
-            "pos_full": token.tag_,
-            "morphology": token.morph.to_dict(),
+            "pos_full": token_tag,
+            "morphology": token_morph,
             "meanings": meanings,
             "synonyms": synonyms,
             "antonyms": antonyms,
