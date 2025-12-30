@@ -653,7 +653,20 @@ async def websocket_endpoint(ws: WebSocket):
                                     to_speak = current_sentence.strip()
                                     if to_speak:
                                         print(f"Speaking ({detected_lang}): {to_speak}")
-                                        await ws.send_json({"type": "log", "role": "assistant", "text": to_speak, "lang": detected_lang})
+                                        
+                                        # Generate Translation
+                                        full_trans = translate_text(to_speak, detected_lang, "en")
+
+                                        await ws.send_json({
+                                            "type": "log", 
+                                            "role": "assistant", 
+                                            "text": to_speak, 
+                                            "lang": detected_lang,
+                                            "translations": {
+                                                "full": full_trans
+                                            }
+                                        })
+                                        
                                         # Generate audio for this sentence
                                         pcm = await run_in_threadpool(synthesize_audio, to_speak, current_voice)
                                         if len(pcm) > 0:
@@ -669,9 +682,23 @@ async def websocket_endpoint(ws: WebSocket):
                             
             # Process any remaining text
             if current_sentence.strip():
-                print(f"Speaking (final): {current_sentence}")
-                await ws.send_json({"type": "log", "role": "assistant", "text": current_sentence, "lang": detected_lang})
-                pcm = await run_in_threadpool(synthesize_audio, current_sentence, current_voice)
+                to_speak = current_sentence.strip()
+                print(f"Speaking (final): {to_speak}")
+                
+                # Generate Translation for final sentence
+                full_trans = translate_text(to_speak, detected_lang, "en")
+
+                await ws.send_json({
+                    "type": "log", 
+                    "role": "assistant", 
+                    "text": to_speak, 
+                    "lang": detected_lang,
+                    "translations": {
+                        "full": full_trans
+                    }
+                })
+                
+                pcm = await run_in_threadpool(synthesize_audio, to_speak, current_voice)
                 if len(pcm) > 0:
                     buf = io.BytesIO()
                     sf.write(buf, pcm, PLAYBACK_SAMPLE_RATE, format="WAV")
