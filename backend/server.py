@@ -40,6 +40,10 @@ import argostranslate.translate
 # Download WordNet if needed
 nltk.download("wordnet", quiet=True)
 
+class SentenceAnalysisRequest(BaseModel):
+    text: str
+    lang: str
+
 app = FastAPI()
 
 # --- NLP Models Setup ---
@@ -501,6 +505,33 @@ async def get_root_file(filename: str):
             return json.loads(content)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/analyze/sentence")
+async def analyze_sentence(req: SentenceAnalysisRequest):
+    nlp = get_nlp(req.lang)
+    if not nlp:
+        raise HTTPException(status_code=400, detail=f"Language '{req.lang}' not supported for analysis.")
+    
+    doc = nlp(req.text)
+    tokens = []
+    
+    for token in doc:
+        morph = token.morph.to_dict()
+        tokens.append({
+            "text": token.text,
+            "lemma": token.lemma_,
+            "pos": token.pos_,
+            "dep": token.dep_,
+            "head": token.head.i,
+            "tense": morph.get("Tense", ""),
+            "person": morph.get("Person", ""),
+            "morphology": morph
+        })
+    
+    return {
+        "text": req.text,
+        "tokens": tokens
+    }
 
 @app.websocket("/ws")
 async def websocket_endpoint(ws: WebSocket):
